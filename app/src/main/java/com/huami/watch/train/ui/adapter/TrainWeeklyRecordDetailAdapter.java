@@ -9,17 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.huami.watch.template.model.DayTrainPlan;
-import com.huami.watch.template.model.TrainPlan;
 import com.huami.watch.train.R;
 import com.huami.watch.train.model.DayTrainRecord;
 import com.huami.watch.train.utils.Constant;
 import com.huami.watch.train.utils.DataUtils;
-import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.SAXUtils;
 
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -132,16 +130,16 @@ public class TrainWeeklyRecordDetailAdapter  extends RecyclerView.Adapter<TrainW
     class ViewHolder extends  RecyclerView.ViewHolder{
 
 
-        @BindView(R.id.train_detail_week)
+        @Bind(R.id.train_detail_week)
         TextView trainDetailWeek ;
 
-        @BindView(R.id.day_train_content)
+        @Bind(R.id.day_train_content)
         TextView dayTrainContent ;
 
-        @BindView(R.id.icon_finish)
+        @Bind(R.id.icon_finish)
         ImageView iconFinish ;
 
-        @BindView(R.id.finish_status)
+        @Bind(R.id.finish_status)
         TextView finishStatus;
 
 

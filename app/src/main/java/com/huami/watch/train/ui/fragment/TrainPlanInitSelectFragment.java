@@ -26,9 +26,8 @@ import com.huami.watch.train.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import rx.Subscriber;
 
 /**
@@ -46,20 +45,19 @@ public class TrainPlanInitSelectFragment extends BaseFragment {
     private TrainPlanAdapter trainPlanAdapter;
 
     private LinearLayoutManager manager ;
-    @BindView(R.id.recyclearView)
+    @Bind(R.id.recyclearView)
     RecyclerView recyclerView;
 
 
-    @BindView(R.id.ll_scrollView)
+    @Bind(R.id.ll_scrollView)
     FullScrollView fullScrollView;
-    private Unbinder  unbinder ;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root  =  inflater.inflate(R.layout.fragment_init_select,container,false);
-        unbinder = ButterKnife.bind(this,root);
+        ButterKnife.bind(this,root);
 
         trainPlanList = new ArrayList<>();
         trainPlanAdapter  = new TrainPlanAdapter(getActivity(),trainPlanList);
@@ -138,7 +136,7 @@ public class TrainPlanInitSelectFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        ButterKnife.unbind(this);
     }
 
 

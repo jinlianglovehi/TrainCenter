@@ -50,10 +50,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import rx.Observable;
 import rx.Subscriber;
 
@@ -67,29 +66,29 @@ public class TrainRecordDetailFragment extends BaseFragment {
 
      private static final String TAG = TrainRecordDetailFragment.class.getSimpleName();
 
-    @BindView(R.id.txt_my_train_title)
+    @Bind(R.id.txt_my_train_title)
     TextView myTrainTitle ; // 我的训练title
 
-    @BindView(R.id.txt_train_progress)
+    @Bind(R.id.txt_train_progress)
     NumberTextView trainProgress ;//训练进度
 
-    @BindView(R.id.train_days)
+    @Bind(R.id.train_days)
     NumberTextView trainDays ;// 训练天数
 
-    @BindView(R.id.train_mils)
+    @Bind(R.id.train_mils)
     NumberTextView trainMils;// 训练公里数
 
-    @BindView(R.id.list_train_weeklys)
+    @Bind(R.id.list_train_weeklys)
     RecyclerView listTrainWeeklys ;// 训练周数
 
-    @BindView(R.id.ll_scrollView)
+    @Bind(R.id.ll_scrollView)
     FullScrollView ll_scrollView;
 
-    @BindView(R.id.progress_bar)
+    @Bind(R.id.progress_bar)
     ProgressBar progressBar ;
 
 
-    @BindView(R.id.txt_train_finish)
+    @Bind(R.id.txt_train_finish)
     TextView txtTrainFinish ;
 
     private List<Integer> weekNumbers ;// Adapter中的数据
@@ -97,7 +96,6 @@ public class TrainRecordDetailFragment extends BaseFragment {
     private TrainRecord currentTrainRecord ;
     private TrainPlan currentTrainPlan ;
     private Long currentTrainRecordId ;//当前的训练计划信息
-    private Unbinder unbinder;
     private TrainRecordDetailAdapter  trainDetailAdapter ;
     private int currentWeekly ;
 
@@ -124,7 +122,7 @@ public class TrainRecordDetailFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root  =  inflater.inflate(R.layout.fragment_train_record_detail,container,false);
-        unbinder = ButterKnife.bind(this,root);
+        ButterKnife.bind(this,root);
 
         FullyLinearLayoutManager manager = new FullyLinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -362,6 +360,6 @@ public class TrainRecordDetailFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        ButterKnife.unbind(this);
     }
 }

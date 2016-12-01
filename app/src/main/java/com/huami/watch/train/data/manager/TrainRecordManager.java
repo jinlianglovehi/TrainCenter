@@ -4,10 +4,6 @@ package com.huami.watch.train.data.manager;
 import com.huami.watch.train.data.greendao.AbstractDatabaseManager;
 import com.huami.watch.train.model.TrainRecord;
 
-import javax.inject.Singleton;
-
-import dagger.Module;
-import dagger.Provides;
 import de.greenrobot.dao.AbstractDao;
 
 /**

@@ -32,6 +32,8 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
         public final static Property DayTrainStatus = new Property(6, Integer.class, "dayTrainStatus", false, "DAY_TRAIN_STATUS");
         public final static Property Distance = new Property(7, Double.class, "distance", false, "DISTANCE");
         public final static Property RunremindId = new Property(8, Integer.class, "runremindId", false, "RUNREMIND_ID");
+        public final static Property SwimTimeMin = new Property(9, Integer.class, "swimTimeMin", false, "SWIM_TIME_MIN");
+        public final static Property SwimTimeMax = new Property(10, Integer.class, "swimTimeMax", false, "SWIM_TIME_MAX");
     };
 
 
@@ -55,7 +57,9 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
                 "'OFFSET_DAYS' INTEGER," + // 5: offsetDays
                 "'DAY_TRAIN_STATUS' INTEGER," + // 6: dayTrainStatus
                 "'DISTANCE' REAL," + // 7: distance
-                "'RUNREMIND_ID' INTEGER);"); // 8: runremindId
+                "'RUNREMIND_ID' INTEGER," + // 8: runremindId
+                "'SWIM_TIME_MIN' INTEGER," + // 9: swimTimeMin
+                "'SWIM_TIME_MAX' INTEGER);"); // 10: swimTimeMax
     }
 
     /** Drops the underlying database table. */
@@ -113,6 +117,16 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
         if (runremindId != null) {
             stmt.bindLong(9, runremindId);
         }
+ 
+        Integer swimTimeMin = entity.getSwimTimeMin();
+        if (swimTimeMin != null) {
+            stmt.bindLong(10, swimTimeMin);
+        }
+ 
+        Integer swimTimeMax = entity.getSwimTimeMax();
+        if (swimTimeMax != null) {
+            stmt.bindLong(11, swimTimeMax);
+        }
     }
 
     /** @inheritdoc */
@@ -133,7 +147,9 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
             cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5), // offsetDays
             cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6), // dayTrainStatus
             cursor.isNull(offset + 7) ? null : cursor.getDouble(offset + 7), // distance
-            cursor.isNull(offset + 8) ? null : cursor.getInt(offset + 8) // runremindId
+            cursor.isNull(offset + 8) ? null : cursor.getInt(offset + 8), // runremindId
+            cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9), // swimTimeMin
+            cursor.isNull(offset + 10) ? null : cursor.getInt(offset + 10) // swimTimeMax
         );
         return entity;
     }
@@ -150,6 +166,8 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
         entity.setDayTrainStatus(cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6));
         entity.setDistance(cursor.isNull(offset + 7) ? null : cursor.getDouble(offset + 7));
         entity.setRunremindId(cursor.isNull(offset + 8) ? null : cursor.getInt(offset + 8));
+        entity.setSwimTimeMin(cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9));
+        entity.setSwimTimeMax(cursor.isNull(offset + 10) ? null : cursor.getInt(offset + 10));
      }
     
     /** @inheritdoc */

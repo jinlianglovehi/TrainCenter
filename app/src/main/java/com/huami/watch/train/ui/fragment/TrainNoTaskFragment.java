@@ -13,10 +13,9 @@ import com.huami.watch.train.ui.activity.TrainPlanSelectActivity;
 import com.huami.watch.train.utils.ActivityUtils;
 import com.huami.watch.train.utils.LogUtils;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by jinliang on 16/11/15.
@@ -26,17 +25,16 @@ import butterknife.Unbinder;
 
 public class TrainNoTaskFragment extends BaseFragment {
  private static final String TAG = TrainNoTaskFragment.class.getSimpleName();
-    private Unbinder unbinder;
 
 
-    @BindView(R.id.rl_container)
+    @Bind(R.id.rl_container)
     RelativeLayout relativeLayout;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root  =  inflater.inflate(R.layout.fragment_train_no_task,container,false);
-        unbinder =  ButterKnife.bind(this,root);
+        ButterKnife.bind(this,root);
         return root ;
 
     }
@@ -52,6 +50,6 @@ public class TrainNoTaskFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        ButterKnife.unbind(this);
     }
 }

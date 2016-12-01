@@ -87,6 +87,9 @@ public class TrainCenterDB {
 
         dayTrainRecord.addIntProperty("runremindId"); // 每天的训练提醒id
 
+        dayTrainRecord.addIntProperty("swimTimeMin");// 游泳min
+        dayTrainRecord.addIntProperty("swimTimeMax");// 游泳max
+
 
 
 

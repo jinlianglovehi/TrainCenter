@@ -10,11 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.huami.watch.train.R;
-import com.huami.watch.train.utils.LogUtils;
 
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -97,10 +96,10 @@ public class TrainRecordDetailAdapter extends RecyclerView.Adapter<TrainRecordDe
 
     class ViewHolder extends  RecyclerView.ViewHolder{
 
-        @BindView(R.id.txt_weekly_number)
+        @Bind(R.id.txt_weekly_number)
         TextView weeklyNumber ;
 
-        @BindView(R.id.icon_day_train_status)
+        @Bind(R.id.icon_day_train_status)
         ImageView dayTrainStatus;
 
 

@@ -36,9 +36,8 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import rx.Observable;
 import rx.Subscriber;
 
@@ -51,7 +50,6 @@ import rx.Subscriber;
 public class TrainWeeklyRecordDetailFragment extends BaseFragment {
 
      private static final String TAG = TrainWeeklyRecordDetailFragment.class.getSimpleName();
-    private Unbinder unbinder ;
 
     private String title ;
     private int weekNumber ;
@@ -59,16 +57,16 @@ public class TrainWeeklyRecordDetailFragment extends BaseFragment {
 
     private Integer trainRecordStatus ;
     private Long start_date;
-    @BindView(R.id.train_record_title)
+    @Bind(R.id.train_record_title)
     TextView trainRecordTitle ;
 
-    @BindView(R.id.current_week_number)
+    @Bind(R.id.current_week_number)
     TextView currentWeekNumber;
 
-    @BindView(R.id.recyclear_view)
+    @Bind(R.id.recyclear_view)
     RecyclerView recyclearView;
 
-    @BindView(R.id.fullScrollView)
+    @Bind(R.id.fullScrollView)
     FullScrollView fullScrollView;
     private TrainWeeklyRecordDetailAdapter trainWeeklyAdapter ;
 
@@ -106,7 +104,7 @@ public class TrainWeeklyRecordDetailFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_weekly_train_record_detail,container,false);
-        unbinder = ButterKnife.bind(this,root);
+        ButterKnife.bind(this,root);
         trainRecordTitle.setText(title);
         currentWeekNumber.setText(getResources().getStringArray(R.array.weekdays)[weekNumber]);
          manager = new FullyLinearLayoutManager(getActivity());
@@ -265,6 +263,6 @@ public class TrainWeeklyRecordDetailFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        ButterKnife.unbind(this);
     }
 }

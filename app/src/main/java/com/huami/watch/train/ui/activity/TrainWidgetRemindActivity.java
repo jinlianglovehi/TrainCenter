@@ -2,7 +2,6 @@ package com.huami.watch.train.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
@@ -29,10 +28,9 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import rx.Observable;
 import rx.Subscriber;
 
@@ -49,13 +47,12 @@ public class TrainWidgetRemindActivity extends BaseActivity {
 
 
 
-    @BindView(R.id.train_record_title)
+    @Bind(R.id.train_record_title)
     TextView train_record_title ;  // 设置的是选择训练的标题
 
-    @BindView(R.id.train_plan_remind)
+    @Bind(R.id.train_plan_remind)
     TextView train_plan_remind ;
 
-    private Unbinder unbinder;
     private Long trainRecordId ; // 当前进行训练记录的id
 
     private int trainPlanId ;
@@ -65,7 +62,7 @@ public class TrainWidgetRemindActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget_remind);
-        unbinder = ButterKnife.bind(this);
+        ButterKnife.bind(this);
 
 
 
@@ -215,6 +212,6 @@ public class TrainWidgetRemindActivity extends BaseActivity {
             assignPlanDialog.dismiss();
         }
 
-        unbinder.unbind();
+        ButterKnife.unbind(this);
     }
 }

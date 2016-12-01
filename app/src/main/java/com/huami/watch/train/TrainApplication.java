@@ -3,11 +3,7 @@ package com.huami.watch.train;
 import android.app.Application;
 import android.content.Intent;
 
-import com.huami.watch.train.data.DaggerDataSourceComponent;
-import com.huami.watch.train.data.DataSourceComponent;
-import com.huami.watch.train.data.DataSourceModule;
 import com.huami.watch.train.data.greendao.AbstractDatabaseManager;
-import com.huami.watch.train.data.manager.TrainRecordManager;
 import com.huami.watch.train.ui.notification.NotificationService;
 import com.huami.watch.train.utils.LogUtils;
 
@@ -18,15 +14,15 @@ import com.huami.watch.train.utils.LogUtils;
 public class TrainApplication  extends Application{
 
      private static final String TAG = TrainApplication.class.getSimpleName();
-    private DataSourceComponent dataSourceComponent;
+//    private DataSourceComponent dataSourceComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
         initDB();
-        dataSourceComponent = DaggerDataSourceComponent.builder().trainApplicationModule(new TrainApplicationModule(getApplicationContext()))
-                .dataSourceModule(new DataSourceModule())
-               .build();
+//        dataSourceComponent = DaggerDataSourceComponent.builder().trainApplicationModule(new TrainApplicationModule(getApplicationContext()))
+//                .dataSourceModule(new DataSourceModule())
+//               .build();
         initNotificationService();
     }
 
@@ -44,7 +40,7 @@ public class TrainApplication  extends Application{
 
     }
 
-    public DataSourceComponent getDataSourceComponent(){
-        return dataSourceComponent;
-    }
+//    public DataSourceComponent getDataSourceComponent(){
+//        return dataSourceComponent;
+//    }
 }

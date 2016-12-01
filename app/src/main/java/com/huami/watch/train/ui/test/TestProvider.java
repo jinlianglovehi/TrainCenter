@@ -1,11 +1,8 @@
 package com.huami.watch.train.ui.test;
 
-import android.app.Notification;
 import android.app.NotificationManager;
-import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.ContentUris;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -16,14 +13,10 @@ import android.support.v4.app.NotificationCompat;
 import com.huami.watch.train.R;
 import com.huami.watch.train.base.BaseActivity;
 import com.huami.watch.train.ui.notification.NotificationService;
-import com.huami.watch.train.utils.Constant;
 import com.huami.watch.train.utils.LogUtils;
-
-import java.util.Calendar;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by jinliang on 16/11/25.
@@ -33,19 +26,15 @@ import butterknife.Unbinder;
 
 public class TestProvider extends BaseActivity {
      private static final String TAG = TestProvider.class.getSimpleName();
-    private Unbinder unbinder ;
     private NotificationManager notificationManager ;
     private NotificationCompat.Builder builder ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        unbinder = ButterKnife.bind(this);
-
+        ButterKnife.bind(this);
 //        Long todayTrainRecordId = 400l ;
 //        updateTodayTaskStatus(todayTrainRecordId);
-
-
         LogUtils.print(TAG, "onCreate");
 
 //startNotificationService();
@@ -127,7 +116,6 @@ public class TestProvider extends BaseActivity {
 
     }
 
-
     private void initAlarmClock(){
 //            //设置当前时间
 //            Calendar c = Calendar.getInstance();
@@ -143,6 +131,6 @@ public class TestProvider extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        ButterKnife.unbind(this);
     }
 }

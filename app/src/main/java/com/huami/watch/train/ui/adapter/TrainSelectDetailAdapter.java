@@ -11,13 +11,12 @@ import com.huami.watch.template.model.TrainPlan;
 import com.huami.watch.train.R;
 import com.huami.watch.train.model.TrainRecord;
 import com.huami.watch.train.ui.widget.CircleProgressView;
-import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.SAXUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -92,19 +91,19 @@ public class TrainSelectDetailAdapter  extends RecyclerView.Adapter<TrainSelectD
 
     class ViewHolder extends  RecyclerView.ViewHolder{
 
-        @BindView(R.id.train_record_title)
+        @Bind(R.id.train_record_title)
         TextView trainRecordTitle ;
 
-        @BindView(R.id.txt_start_date)
+        @Bind(R.id.txt_start_date)
         TextView txtStartDate ;
 
-        @BindView(R.id.txt_end_date)
+        @Bind(R.id.txt_end_date)
         TextView txtEndDate ;
 
-        @BindView(R.id.circle_progress_view)
+        @Bind(R.id.circle_progress_view)
         CircleProgressView circleProgressView;
 
-        @BindView(R.id.txt_progress_level)
+        @Bind(R.id.txt_progress_level)
         TextView txtProgressLevel;
 
         public ViewHolder(View itemView) {

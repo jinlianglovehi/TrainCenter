@@ -17,7 +17,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by jinliang on 16/11/14.
@@ -29,7 +28,6 @@ public class TrainPlanSelectActivity extends BaseActivity {
 
 
      private static final String TAG = TrainPlanSelectActivity.class.getSimpleName();
-    private Unbinder unbinder ;
 
 
 
@@ -37,7 +35,7 @@ public class TrainPlanSelectActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_container);
-        unbinder = ButterKnife.bind(this);
+        ButterKnife.bind(this);
         EventBus.getDefault().register(this);
         int trainStatus = SPUtils.getTrainStatus(this);
         switch (trainStatus){
@@ -103,7 +101,7 @@ public class TrainPlanSelectActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        ButterKnife.unbind(this);
         EventBus.getDefault().unregister(this);
     }
 }

@@ -5,17 +5,14 @@ package com.huami.watch.train.ui.fragment;
  */
 
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.huami.watch.template.model.DayTrainPlan;
 import com.huami.watch.template.model.RunRemind;
@@ -29,7 +26,6 @@ import com.huami.watch.train.model.DayTrainRecord;
 import com.huami.watch.train.model.DayTrainRecordDao;
 import com.huami.watch.train.model.TrainRecord;
 import com.huami.watch.train.ui.activity.TrainRecordDetailActivity;
-import com.huami.watch.train.ui.event.TrainRecordFinishEvent;
 import com.huami.watch.train.ui.event.UpdateTrainStatusEvent;
 import com.huami.watch.train.ui.widget.CustomDialog;
 import com.huami.watch.train.utils.ActivityUtils;
@@ -50,12 +46,10 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import rx.Observable;
 import rx.Subscriber;
 
@@ -66,19 +60,18 @@ public class TrainTaskingFragment  extends BaseFragment{
 
 
      private static final String TAG = TrainTaskingFragment.class.getSimpleName();
-    @BindView(R.id.train_record_title)
+    @Bind(R.id.train_record_title)
     TextView trainRecordTitile ; // 5公里训练
 
-    @BindView(R.id.day_train_record_stag)
+    @Bind(R.id.day_train_record_stag)
     TextView day_train_record_stag ;// 基础阶段 第 1 周 第 1天
 
-    @BindView(R.id.day_train_record_rich_title)
+    @Bind(R.id.day_train_record_rich_title)
     TextView dayTrainRecordRichTitle ; // 每天的训练的标题
 
-    @BindView(R.id.day_train_record_copywrite)
+    @Bind(R.id.day_train_record_copywrite)
     TextView dayTrainRecordCopyWrite ;// 每天训练提醒 或者是 标记完成状态 或者是距离天数
 
-    private Unbinder unbinder ;
     private Long currentTrainRecordId  ;
 
 
@@ -101,7 +94,7 @@ public class TrainTaskingFragment  extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root  =  inflater.inflate(R.layout.fragment_train_tasking,container,false);
-        unbinder =  ButterKnife.bind(this,root);
+        ButterKnife.bind(this,root);
         EventBus.getDefault().register(this);
         lastUpdateDate = new Date();
         initDate();
@@ -378,6 +371,7 @@ public class TrainTaskingFragment  extends BaseFragment{
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        ButterKnife.unbind(this);
         EventBus.getDefault().unregister(this);
     }
 }

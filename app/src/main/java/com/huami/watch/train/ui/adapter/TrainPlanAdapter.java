@@ -14,7 +14,7 @@ import com.huami.watch.train.utils.DrawableUtils;
 
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -99,9 +99,9 @@ public class TrainPlanAdapter  extends RecyclerView.Adapter<TrainPlanAdapter.Vie
     class ViewHolder extends  RecyclerView.ViewHolder{
 
 
-       @BindView(R.id.icon_train_plan)
+       @Bind(R.id.icon_train_plan)
        ImageView imageView;
-        @BindView(R.id.txt_train_plan)
+        @Bind(R.id.txt_train_plan)
         TextView train_plan;
 
         public ViewHolder(View itemView) {

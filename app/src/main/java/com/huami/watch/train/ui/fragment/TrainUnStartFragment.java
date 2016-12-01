@@ -12,9 +12,8 @@ import com.huami.watch.train.base.BaseFragment;
 import com.huami.watch.train.ui.activity.TrainPlanSelectActivity;
 import com.huami.watch.train.utils.ActivityUtils;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by jinliang on 16/11/15.
@@ -25,9 +24,8 @@ import butterknife.Unbinder;
 public class TrainUnStartFragment  extends BaseFragment {
 
 
-    private Unbinder unbinder ;
 
-    @BindView(R.id.ll_train_center_init)
+    @Bind(R.id.ll_train_center_init)
 
     RelativeLayout ll_train_center_init ;
 
@@ -36,7 +34,7 @@ public class TrainUnStartFragment  extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root  =  inflater.inflate(R.layout.fragment_train_init,container,false);
-        unbinder = ButterKnife.bind(this,root);
+        ButterKnife.bind(this,root);
 
         initClickEvent();
 
@@ -60,6 +58,6 @@ public class TrainUnStartFragment  extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        ButterKnife.unbind(this);
     }
 }

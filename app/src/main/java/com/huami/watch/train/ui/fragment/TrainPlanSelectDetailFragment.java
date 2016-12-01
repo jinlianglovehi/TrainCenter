@@ -36,10 +36,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import rx.Observable;
 import rx.Subscriber;
 
@@ -52,21 +51,20 @@ import rx.Subscriber;
 public class TrainPlanSelectDetailFragment extends BaseFragment {
 
      private static final String TAG = TrainPlanSelectDetailFragment.class.getSimpleName();
-    private Unbinder unbinder;
 
 
-    @BindView(R.id.ll_scrollView)
+    @Bind(R.id.ll_scrollView)
     FullScrollView fullScrollView ;
 
-    @BindView(R.id.number_train_days)
+    @Bind(R.id.number_train_days)
     NumberTextView numberTrainDays ;
-    @BindView(R.id.number_train_mils)
+    @Bind(R.id.number_train_mils)
     NumberTextView numberTrainMils ;
 
-    @BindView(R.id.list_train_plans)
+    @Bind(R.id.list_train_plans)
     RecyclerView recyclerView_plans ;
 
-    @BindView(R.id.list_history_records)
+    @Bind(R.id.list_history_records)
     RecyclerView recyclerView_history ;
 
     private List<TrainRecord>  trainRecordList ;
@@ -80,7 +78,7 @@ public class TrainPlanSelectDetailFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root  =  inflater.inflate(R.layout.fragment_train_plan_select_detail,container,false);
-        unbinder = ButterKnife.bind(this,root);
+        ButterKnife.bind(this,root);
 
         //历史记录
         FullyLinearLayoutManager history_manager = new FullyLinearLayoutManager(getActivity());
@@ -227,6 +225,6 @@ public class TrainPlanSelectDetailFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        ButterKnife.unbind(this);
     }
 }
