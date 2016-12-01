@@ -26,28 +26,31 @@ public class TrainCenterStatusActivity extends BaseActivity {
 //    TrainCenterInitPresenter mPresenter;
 //
 
+    private int train_status = -1 ;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_container);
-
-
+        train_status = SPUtils.getTrainStatus(this);
+        initPage();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        initPage();
 
+        if(train_status>-1 && train_status!=SPUtils.getTrainStatus(this)){
+            initPage();
+        }
     }
-
 
     private void initPage(){
 
         /**
          * 根据数据的状态进行判断展示的不同的界面
          */
-        int train_status = SPUtils.getTrainStatus(this);
+
         LogUtils.print(TAG, "initPage" + "trian_status:"+ train_status);
         switch (train_status){
             case SPUtils.TRAIN_STATUS_INIT: // 界面初始化

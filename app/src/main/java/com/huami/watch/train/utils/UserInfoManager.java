@@ -38,32 +38,33 @@ public class UserInfoManager {
     }
 
     public UserInfo getUserInfo(Context context) {
-        // TODO: 16/11/21
-//        if (mUserInfo == null) {
-//            ContentResolver cr = context.getContentResolver();
-//            Cursor cursor = null;
-//            try {
-//                cursor = cr.query(USER_INFO_URI, null, null, null, null);
-//                UserInfo userInfo = new UserInfo();
-//                if (cursor != null && cursor.moveToFirst()) {
-//                    userInfo.setGender(cursor.get(cursor.get(cursor.getInt(cursor.get(cursor.get(cursor.getColumnIndex(CONTENT_KEY_GENDER)));
-//                    userInfo.setYear(cursor.ger(cursor.ger(cursor.getInt(cursor.get(cursor.get(cursor.getColumnIndex(CONTENT_KEY_YEAR)));
-//                    userInfo.setMonth(cursor.geh(cursor.geh(cursor.getInt(cursor.get(cursor.get(cursor.getColumnIndex(CONTENT_KEY_MONTH)));
-//                    userInfo.setWeight(cursor.get(cursor.get(cursor.getFloat(cursor.get(cursor.get(cursor.getColumnIndex(CONTENT_KEY_WEIGHT)));
-//                    userInfo.setHeight(cursor.get(cursor.get(cursor.getInt(cursor.get(cursor.get(cursor.getColumnIndex(CONTENT_KEY_HEIGHT)));
-//                }
-//                mUserInfo = userInfo;
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            } finally {
-//                if (cursor != null) {
-//                    cursor.close();
-//                }
-//            }
-//        }
+        if (mUserInfo == null) {
+            ContentResolver cr = context.getContentResolver();
+            Cursor cursor = null;
+            try {
+                cursor = cr.query(USER_INFO_URI, null, null, null, null);
+                UserInfo userInfo = new UserInfo();
+                if (cursor != null && cursor.moveToFirst()) {
+                    userInfo.setGender(cursor.getInt(cursor.getColumnIndex(CONTENT_KEY_GENDER)));
+                    userInfo.setGender(cursor.getInt(cursor.getColumnIndex(CONTENT_KEY_YEAR)));
+                    userInfo.setMonth(cursor.getInt(cursor.getColumnIndex(CONTENT_KEY_MONTH)));
+                    userInfo.setWeight(cursor.getFloat(cursor.getColumnIndex(CONTENT_KEY_WEIGHT)));
+                    userInfo.setHeight(cursor.getInt(cursor.getColumnIndex(CONTENT_KEY_HEIGHT)));
+                }
+                mUserInfo = userInfo;
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                }
+            }
+        }
+
+        // TODO: 16/12/1 上线后需要修改
         mUserInfo = new UserInfo();
-        mUserInfo.setYear(1990);
-        mUserInfo.setMonth(4);
+        mUserInfo.setYear(1989);
+        mUserInfo.setMonth(04);
         return mUserInfo;
 
     }

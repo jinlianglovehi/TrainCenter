@@ -105,7 +105,7 @@ public class NotificationReceiver extends BroadcastReceiver {
             if(sportType== Constant.SPORT_TYPE_REST){
                 return true ;
             }
-            if(cursor.moveToNext()) {
+            if(cursor != null && cursor.moveToFirst()) {
                 item = 0 ;
                 id  = cursor.getLong(item++);
                 distance = cursor.getDouble(item++);
