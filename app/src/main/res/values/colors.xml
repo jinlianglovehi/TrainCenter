@@ -3,4 +3,36 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="default_background_black">#FF000000</color>
+    <color name="default_font_color_white">#ffffff</color>
+
+    <color name="day_train_record_gray">#ddd</color>
+    <color name="green">#FF00FF0C</color>
+
+    <color name="train_plan_detail_train_number">#FF09FF00</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="train_detail_centre_gray">#33FFFFFF</color>
+
+    <color name="gray_color">#FFFFFF</color>
+
+    <color name="divider_line_color">#66FFFFFF</color>
+
+    <!--  快速设置界面的颜色 -->
+    <color name="quicksettings_text_color_white">#FFFFFF</color>
+    <color name="quicksettings_text_color_black">#000000</color>
+    <color name="quicksettings_text_color_green">#00FF00</color>
+    <color name="quicksettings_auto_light">#00000000</color>
+    <color name="quicksettings_disturb_bg">#00000000</color>
+    <color name="quicksettings_more">#00000000</color>
+    <color name="quicksettings_status">#00000000</color>
+    <color name="quciksettings_bottom_connect">#FF212121</color>
+    <color name="quciksettings_background">#FF000000</color>
+
+    <!-- 下拉充电界面颜色 -->
+    <color name="quicksettings_chargingCircle_color">#FF00E932</color>
+    <color name="quicksettings_chargingBgCircle_color">#484848</color>
+    <color name="quicksettings_sportTime_color">#FF16ED05</color>
+
+
 </resources>

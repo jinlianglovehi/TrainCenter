@@ -2,4 +2,14 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <dimen name="base_margin_top">22.5dp</dimen>
+    
+    <dimen name="icon_margin_left_to_text">-5dp</dimen>
+
+
+    <!-- 快速设置充电界面单位 -->
+    <dimen name="quicksettings_chargingCircleLineStrokeWidth">2.7dip</dimen>
+    <dimen name="quicksettings_chargingCircleRadius">19.2dip</dimen>
+    <item name="quicksettings_chargingCircleMaxProgress" type="dimen" format="integer">100</item>
 </resources>

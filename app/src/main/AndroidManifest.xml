@@ -2,29 +2,74 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.huami.watch.train">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-
         android:name=".TrainApplication"
-        android:theme="@style/AppTheme">
+        android:theme="@style/train_center_theme">
 
-        <activity android:name=".ui.TrainCenterInitActivity">
+
+        <!--<activity android:name=".ui.test.TestProvider">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+        <activity android:name=".ui.activity.TrainCenterStatusActivity"
+              android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
 
-        <activity android:name=".ui.TrainCenterStartActivity">
+        <!--训练选择界面-->
+        <activity android:name=".ui.activity.TrainPlanSelectActivity" />
 
 
+        <!--训练记录详情界面-->
+        <activity android:name=".ui.activity.TrainRecordDetailActivity" />
+        <!--周记录详情界面-->
+        <activity android:name=".ui.activity.TrainWeeklyRecordDetailActivity" />
+        <!--选择一个训练计划后的widget 提醒的界面-->
+        <activity android:name=".ui.activity.TrainWidgetRemindActivity" />
 
-        </activity>
+
+        <!--不死进程-->
+        <service android:name=".ui.notification.NotificationService"
+            android:process=".notificationmessage"
+            />
+
+
+        <!--处理的是-->
+        <receiver android:name=".ui.notification.NotificationReceiver">
+            <intent-filter>
+                <action android:name="com.huami.watch.train.ui.notification.notificationservice"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+
+            <intent-filter >
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+                <data android:scheme="file" >
+                </data>
+            </intent-filter>
+        </receiver>
+
+        <!--向外提供服务-->
+        <provider
+            android:name="com.huami.watch.train.ui.provider.DayTrainRecordProvider"
+            android:authorities="com.huami.watch.train.ui.provider.dayTrainRecordProvider"
+            android:exported="true"
+            />
 
     </application>
 

@@ -107,29 +107,32 @@ public abstract  class AbstractDatabaseManager<M, K> implements IDatabase<M, K> 
     }
 
     @Override
-    public boolean insert(@NonNull M m) {
+    public long insert(@NonNull M m) {
+        long result = -1 ;
         try {
-            if (m == null)
-                return false;
-            openWritableDb();
-            getAbstractDao().insert(m);
+            if (m != null) {
+                openWritableDb();
+                result = getAbstractDao().insert(m);
+            }
         } catch (SQLiteException e) {
-            return false;
+            result = -1 ;
         }
-        return true;
+        return result;
     }
 
     @Override
-    public boolean insertOrReplace(@NonNull M m) {
+    public long insertOrReplace(@NonNull M m) {
+        long result = -1 ;
         try {
-            if (m == null)
-                return false;
-            openWritableDb();
-            getAbstractDao().insertOrReplace(m);
+            if (m != null){
+                openWritableDb();
+                result = getAbstractDao().insertOrReplace(m);
+            }
+
         } catch (SQLiteException e) {
-            return false;
+            return result;
         }
-        return true;
+        return result;
     }
 
     @Override

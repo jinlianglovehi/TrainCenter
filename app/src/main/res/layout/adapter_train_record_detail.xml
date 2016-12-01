@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_marginRight="8.5dp"
+    android:layout_height="94dp">
+
+
+    <!--右边的选择-->
+    <ImageView
+        android:id="@+id/icon_day_train_status"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/day_train_right_selected"
+        android:layout_centerVertical="true"
+        />
+
+
+    <!--第几周-->
+    <!--style="@style/train_plan_detail_train_title"-->
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:drawableLeft="@mipmap/current_weekly_mark"
+        android:id="@+id/txt_weekly_number"
+        android:textSize="20dp"
+        android:gravity="center_vertical|right"
+        android:layout_centerVertical="true"
+       android:layout_marginLeft="26dp"
+        android:layout_alignParentLeft="true"
+        android:text="第一周"
+        />
+
+
+</RelativeLayout>

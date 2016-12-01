@@ -7,13 +7,17 @@ package com.huami.watch.train.model;
 public class TrainRecord {
 
     private Long id;
+    private Integer trainPlanId;
     private Integer trainType;
     private String trainTitle;
-    private String copywriter;
     private Integer trainStatus;
     private java.util.Date startData;
     private java.util.Date endData;
     private Integer trainDays;
+    private Integer totalDays;
+    private Double trainTotalLength;
+    private Double totalLength;
+    private Integer lastTrainOffsetDays;
 
     public TrainRecord() {
     }
@@ -22,15 +26,19 @@ public class TrainRecord {
         this.id = id;
     }
 
-    public TrainRecord(Long id, Integer trainType, String trainTitle, String copywriter, Integer trainStatus, java.util.Date startData, java.util.Date endData, Integer trainDays) {
+    public TrainRecord(Long id, Integer trainPlanId, Integer trainType, String trainTitle, Integer trainStatus, java.util.Date startData, java.util.Date endData, Integer trainDays, Integer totalDays, Double trainTotalLength, Double totalLength, Integer lastTrainOffsetDays) {
         this.id = id;
+        this.trainPlanId = trainPlanId;
         this.trainType = trainType;
         this.trainTitle = trainTitle;
-        this.copywriter = copywriter;
         this.trainStatus = trainStatus;
         this.startData = startData;
         this.endData = endData;
         this.trainDays = trainDays;
+        this.totalDays = totalDays;
+        this.trainTotalLength = trainTotalLength;
+        this.totalLength = totalLength;
+        this.lastTrainOffsetDays = lastTrainOffsetDays;
     }
 
     public Long getId() {
@@ -39,6 +47,14 @@ public class TrainRecord {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getTrainPlanId() {
+        return trainPlanId;
+    }
+
+    public void setTrainPlanId(Integer trainPlanId) {
+        this.trainPlanId = trainPlanId;
     }
 
     public Integer getTrainType() {
@@ -55,14 +71,6 @@ public class TrainRecord {
 
     public void setTrainTitle(String trainTitle) {
         this.trainTitle = trainTitle;
-    }
-
-    public String getCopywriter() {
-        return copywriter;
-    }
-
-    public void setCopywriter(String copywriter) {
-        this.copywriter = copywriter;
     }
 
     public Integer getTrainStatus() {
@@ -95,6 +103,38 @@ public class TrainRecord {
 
     public void setTrainDays(Integer trainDays) {
         this.trainDays = trainDays;
+    }
+
+    public Integer getTotalDays() {
+        return totalDays;
+    }
+
+    public void setTotalDays(Integer totalDays) {
+        this.totalDays = totalDays;
+    }
+
+    public Double getTrainTotalLength() {
+        return trainTotalLength;
+    }
+
+    public void setTrainTotalLength(Double trainTotalLength) {
+        this.trainTotalLength = trainTotalLength;
+    }
+
+    public Double getTotalLength() {
+        return totalLength;
+    }
+
+    public void setTotalLength(Double totalLength) {
+        this.totalLength = totalLength;
+    }
+
+    public Integer getLastTrainOffsetDays() {
+        return lastTrainOffsetDays;
+    }
+
+    public void setLastTrainOffsetDays(Integer lastTrainOffsetDays) {
+        this.lastTrainOffsetDays = lastTrainOffsetDays;
     }
 
 }

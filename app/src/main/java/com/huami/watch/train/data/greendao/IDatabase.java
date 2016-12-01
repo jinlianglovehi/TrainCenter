@@ -12,7 +12,7 @@ import de.greenrobot.dao.query.QueryBuilder;
 
 public interface IDatabase<M, K> {
 
-    boolean insert(M m);
+    long insert(M m);
 
     boolean delete(M m);
 
@@ -24,7 +24,7 @@ public interface IDatabase<M, K> {
 
     boolean deleteAll();
 
-    boolean insertOrReplace(@NonNull M m);
+    long insertOrReplace(@NonNull M m);
 
     boolean update(M m);
 

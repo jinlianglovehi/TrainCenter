@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="5dp"
+    android:layout_centerHorizontal="true"
+    android:layout_height="40dp"
+   >
+    <!--训练内容-->
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/icon_train_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/training_list_icon_5km"
+            />
+
+
+        <TextView
+            android:id="@+id/txt_train_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            style="@style/mytrain_trainplan_list_item"
+            android:layout_marginLeft="10dp"
+            android:text="新手训练"
+
+            />
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

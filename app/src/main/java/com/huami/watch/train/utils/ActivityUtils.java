@@ -16,6 +16,9 @@
 
 package com.huami.watch.train.utils;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,6 +30,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * This provides methods to help Activities load their UI.
  */
 public class ActivityUtils {
+
+    public static final String TRAIN_RECOTD_ID = "train_record_id" ;// 训练记录id
+
+    public static final String TRAIN_PLAN_ID = "train_plan_id" ;// 训练计划id
 
     /**
      * The {@code fragment} is added to the container view with id {@code frameId}. The operation is
@@ -40,6 +47,39 @@ public class ActivityUtils {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(frameId, fragment);
         transaction.commit();
+    }
+
+
+    /**
+     * 进行界面跳转 含有参数
+     * @param mContext
+     * @param className
+     */
+    public static void startActivity(Context mContext , Class className,Integer trainPlanId){
+        Intent intent = new Intent(mContext,className);
+        intent.putExtra(TRAIN_PLAN_ID,trainPlanId);
+        mContext.startActivity(intent);
+
+    }
+
+
+    public static void startActivity(Context mContext , Class className,Long  trainRecordId){
+        Intent intent = new Intent(mContext,className);
+        Bundle bundle = new Bundle();
+        bundle.putLong(Constant.ENTITY_CURRENT_TRAIN_RECORD_ID,trainRecordId);
+        intent.putExtras(bundle);
+        mContext.startActivity(intent);
+    }
+
+    /**
+     * 进行界面跳转 不含有参数
+     * @param mContext
+     * @param className
+     */
+    public static void startActivity(Context mContext , Class className){
+        Intent intent = new Intent(mContext,className);
+        mContext.startActivity(intent);
+
     }
 
 }

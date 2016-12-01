@@ -23,8 +23,10 @@ public class TrainCenterDB {
         // schema2.enableActiveEntitiesByDefault();
         // schema2.enableKeepSectionsByDefault();
 
+
         addTrainRecord(schema);
 
+        addDayTrainRecord(schema);
         new DaoGenerator().generateAll(schema, "/Users/jinliang/Downloads/bleProject/TrainCenter/app/src/main/java-gen");
     }
 
@@ -37,15 +39,20 @@ public class TrainCenterDB {
         Entity trainRecord = schema.addEntity("TrainRecord");
         // 你也可以重新给表命名
         trainRecord.setTableName("TrainRecord");
-        trainRecord.addIdProperty().primaryKey().autoincrement();// primary id
+        trainRecord.addIdProperty().primaryKey().autoincrement();
+        trainRecord.addIntProperty("trainPlanId");
         trainRecord.addIntProperty("trainType");// 训练类型
-        trainRecord.addStringProperty("trainTitle");// 训练标题
-        trainRecord.addStringProperty("copywriter");// 文案
+        trainRecord.addStringProperty("trainTitle");// 训练标题  //废弃
+//        trainRecord.addStringProperty("copywriter");// 文案  // 设置的是动态的属性
         trainRecord.addIntProperty("trainStatus");// 训练状态 进行中 或者是训练完成
         trainRecord.addDateProperty("startData");// 开始时间
         trainRecord.addDateProperty("endData");// 结束时间
         trainRecord.addIntProperty("trainDays");// 训练天数
+        trainRecord.addIntProperty("totalDays");// 总的训练天数
+        trainRecord.addDoubleProperty("trainTotalLength");//已经训练的总里程
+        trainRecord.addDoubleProperty("totalLength");// 一项训练计划的总里程。
 
+        trainRecord.addIntProperty("lastTrainOffsetDays");// 最后的训练天数
 
 
 
@@ -61,20 +68,26 @@ public class TrainCenterDB {
 
         dayTrainRecord.setTableName("DayTrainRecord");
 
-        dayTrainRecord.addIdProperty().primaryKey().autoincrement();// primary id ;
+        dayTrainRecord.addIdProperty().primaryKey().autoincrement();//id ;
 
-
-        dayTrainRecord.addIntProperty("copyWriteId");// 文案的id
-
-        dayTrainRecord.addIntProperty("tarinContent"); //训练内容
 
         dayTrainRecord.addLongProperty("trainRecordId");// 记录的是训练的id
 
-        dayTrainRecord.addIntProperty("trainWeekly");//训练周
 
-        dayTrainRecord.addIntProperty("trainDay");// 训练天
+        dayTrainRecord.addIntProperty("trainType");// 添加训练类型，五公里 10km 之间的分类
+        dayTrainRecord.addIntProperty("rateStart");// 心率最小百分比 *100  计算方式还需要自己计算
+
+        dayTrainRecord.addIntProperty("rateEnd");// 心率的最大百分百 * 100 计算方式自己解决
+
+        dayTrainRecord.addIntProperty("offsetDays");// 从开始偏移的天数
 
         dayTrainRecord.addIntProperty("dayTrainStatus");// 每天的训练状态
+
+        dayTrainRecord.addDoubleProperty("distance");// 每天的训练长度
+
+        dayTrainRecord.addIntProperty("runremindId"); // 每天的训练提醒id
+
+
 
 
     }

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/ll_train_center_init"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--训练计划的title  5公里训练-->
+    <TextView
+        android:id="@+id/train_record_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        android:text="5公里训练"
+        style="@style/train_status_detail_title"
+
+        />
+
+    <!-- 每天训练的阶段  %1$s 第 %1$d 周 第 %1$d 天-->
+    <TextView
+        android:id="@+id/day_train_record_stag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/train_record_title"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        style="@style/train_status_detail_stag"
+        android:layout_marginTop="6dp"
+
+        />
+
+    <!--中间的容器-->
+
+
+    <TextView
+        android:id="@+id/txt_train_center_detail"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="@string/train_detail"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/train_detail"
+        style="@style/train_detail_bottom"
+        android:layout_alignParentBottom="true"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rl_middle_container"
+        android:layout_width="match_parent"
+        android:background="@color/train_detail_centre_gray"
+        android:layout_centerInParent="true"
+        android:layout_height="70dp">
+
+
+        <!--每天的训练的文案   训练提醒-->
+        <TextView
+            android:id="@+id/day_train_record_copywrite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:singleLine="false"
+            style="@style/train_small_remide_green"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            />
+
+
+        <!--每天的训练的title  基础跑 3.2 公里-->
+            <TextView
+                android:id="@+id/day_train_record_rich_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@id/day_train_record_copywrite"
+                android:textAlignment="center"
+                android:drawablePadding="3dp"
+                android:layout_marginBottom="5dp"
+                style="@style/train_detail_rich_text_title"
+                android:textColor="#FFFFFF"
+                />
+
+
+
+
+    </RelativeLayout>
+</RelativeLayout>

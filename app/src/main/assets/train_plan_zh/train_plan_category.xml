@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<trainplans>
+        <trainplan id="1">
+            <title>新手上路</title>
+            <type>1</type>
+            <orderId>1</orderId>
+            <copyWrite>基础跑 3.2公里，锻炼你|的跑步能力，有更适应跑|步的心肺能力。</copyWrite>
+            <totalLength>86.4</totalLength>
+            <totalDays>56</totalDays>
+        </trainplan>
+        <trainplan id="2">
+            <title>5公里训练</title>
+            <type>2</type>
+            <orderId>2</orderId>
+            <totalLength>148</totalLength>
+            <totalDays>56</totalDays>
+            <copyWrite>基础跑 3.2公里，锻炼你|的跑步能力，有更适应跑|步的心肺能力。</copyWrite>
+        </trainplan>
+        <trainplan id="3">
+            <title>10公里训练</title>
+            <type>3</type>
+            <orderId>3</orderId>
+            <totalLength>212</totalLength>
+            <totalDays>56</totalDays>
+            <copyWrite>基础跑 3.2公里，锻炼你|的跑步能力，有更适应跑|步的心肺能力。</copyWrite>
+        </trainplan>
+        <trainplan id="4">
+            <title>半程马拉松训练</title>
+            <type>4</type>
+            <orderId>4</orderId>
+            <totalLength>307.4</totalLength>
+            <totalDays>56</totalDays>
+            <copyWrite>基础跑 3.2公里，锻炼你|的跑步能力，有更适应跑|步的心肺能力。</copyWrite>
+        </trainplan>
+        <trainplan id="5">
+            <title>全程马拉松训练</title>
+            <type>5</type>
+            <orderId>5</orderId>
+            <totalLength>436.0</totalLength>
+            <totalDays>56</totalDays>
+            <copyWrite>基础跑 3.2公里，锻炼你|的跑步能力，有更适应跑|步的心肺能力。</copyWrite>
+        </trainplan>
+</trainplans>

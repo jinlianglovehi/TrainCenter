@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.huami.watch.train.ui.widget.FullScrollView
+    android:id="@+id/fullScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/train_record_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="20.7dp"
+        style="@style/train_record_detail_title"/>
+        <!--android:text="5公里训练"-->
+
+    <TextView
+        android:id="@+id/current_week_number"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"/>
+        <!--android:text="第二周"-->
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclear_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        />
+</LinearLayout>
+
+
+</com.huami.watch.train.ui.widget.FullScrollView>

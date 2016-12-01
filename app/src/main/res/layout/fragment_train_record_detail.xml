@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.huami.watch.train.ui.widget.FullScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--我的训练-->
+        <TextView
+            android:id="@+id/txt_my_train_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base_margin_top"
+            style="@style/train_record_detail_title"
+            android:text="五公里训练" />
+
+
+        <!--完成进度的百分比-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="19.5dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/white"
+                android:text="@string/train_record_complete_percent" />
+
+            <!--训练完成的百分比-->
+            <com.huami.watch.train.ui.widget.NumberTextView
+                android:id="@+id/txt_train_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="75%"
+                />
+
+        </RelativeLayout>
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
+            android:max="100"
+            android:progress="20"
+            android:progressDrawable="@drawable/layer_list_progress_drawable" />
+
+        <!--详细的数据提醒-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:layout_marginTop="12.5dp"
+            android:orientation="horizontal"
+            >
+
+            <!--左侧的训练天数-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/text_layout_center"
+                    android:text="@string/train_days"
+                    />
+
+                <com.huami.watch.train.ui.widget.NumberTextView
+                    android:id="@+id/train_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/train_record_detail_number"
+                    android:text="1/56"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                style="@style/base_gray_line"
+
+                />
+            <!--右边的训练里程-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="3">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/text_layout_center"
+                    android:text="@string/train_mileage"
+                    />
+
+                <com.huami.watch.train.ui.widget.NumberTextView
+                    android:id="@+id/train_mils"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/train_record_detail_number"
+                    android:text="3.2/148.1"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!--8 周的数据信息-->
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_train_weeklys"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!--训练结束-->
+        <TextView
+            android:id="@+id/txt_train_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/train_detail_white"
+            style="@style/mytrain_trainplan_list_item"
+            android:text="@string/train_finish"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textColor="@color/default_background_black"
+            android:layout_marginBottom="10dp"
+            />
+
+    </LinearLayout>
+
+
+
+</com.huami.watch.train.ui.widget.FullScrollView>

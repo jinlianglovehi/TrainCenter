@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/rl_widget_container"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--训练模板title-->
+    <TextView
+        android:id="@+id/train_record_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="20.7dp"
+        style="@style/train_status_detail_title"
+        />
+
+    <!-- 训练计划提醒-->
+    <TextView
+        android:id="@+id/train_plan_remind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_centerInParent="true"
+        style="@style/train_widget_remind_text"
+        />
+
+
+    <!--训练开始Btn-->
+    <TextView
+        android:id="@+id/txt_start_train"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        android:textAlignment="center"
+        android:text="@string/train_start"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/default_background_black"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/train_start_green"
+        style="@style/train_detail_bottom"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

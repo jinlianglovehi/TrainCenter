@@ -1,22 +1,16 @@
 package com.huami.watch.train.businessmodolex.traininit;
 
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.huami.watch.train.R;
 import com.huami.watch.train.base.BaseFragment;
-import com.huami.watch.train.ui.TrainCenterStartActivity;
 import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.Utils;
 
-import javax.inject.Inject;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -53,13 +47,14 @@ public class TrainCenterInitFragment extends BaseFragment implements  TrainCente
     @OnClick(R.id.ll_train_center_init)
     void pageClick(){
         LogUtils.print(TAG, "pageClick");
-        mPresenter.startToSelectTrainPlan(getContext());
+        mPresenter.startToSelectTrainPlan(getActivity());
 
     }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        mPresenter.onDestory();// 将presenter 注销掉 防止出现内存溢出的情况
 
     }
 
@@ -72,7 +67,7 @@ public class TrainCenterInitFragment extends BaseFragment implements  TrainCente
     @Override
     public void jumpToSelectTrainPlanPage() {
         LogUtils.print(TAG, "jumpToSelectTrainPlanPage");
-        Utils.startActivity(getActivity(), TrainCenterStartActivity.class);
+//        Utils.startActivity(getActivity(), TrainCenterStartActivity.class);
     }
 
     @Override
