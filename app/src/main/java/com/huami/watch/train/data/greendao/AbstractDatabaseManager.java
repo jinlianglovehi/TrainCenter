@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.huami.watch.train.model.DaoMaster;
-import com.huami.watch.train.model.DaoSession;
+import com.huami.watch.train.data.greendao.db.DaoMaster;
+import com.huami.watch.train.data.greendao.db.DaoSession;
 import com.huami.watch.train.utils.StringUtils;
 
 import java.util.Collection;

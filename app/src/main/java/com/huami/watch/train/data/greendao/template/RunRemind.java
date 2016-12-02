@@ -1,4 +1,4 @@
-package com.huami.watch.template.model;
+package com.huami.watch.train.data.greendao.template;
 
 /**
  * Created by jinliang on 16/11/15.

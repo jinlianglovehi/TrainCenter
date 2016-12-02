@@ -1,4 +1,4 @@
-package com.huami.watch.template.model;
+package com.huami.watch.train.data.greendao.template;
 
 import java.io.Serializable;
 

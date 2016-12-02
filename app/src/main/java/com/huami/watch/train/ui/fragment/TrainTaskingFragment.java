@@ -14,17 +14,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.huami.watch.template.model.DayTrainPlan;
-import com.huami.watch.template.model.RunRemind;
-import com.huami.watch.template.model.TrainPlan;
+
 import com.huami.watch.train.R;
 import com.huami.watch.train.base.BaseFragment;
 import com.huami.watch.train.data.IResultCallBack;
+import com.huami.watch.train.data.greendao.template.DayTrainPlan;
+import com.huami.watch.train.data.greendao.template.RunRemind;
+import com.huami.watch.train.data.greendao.template.TrainPlan;
 import com.huami.watch.train.data.manager.DayTrainRecordManager;
 import com.huami.watch.train.data.manager.TrainRecordManager;
-import com.huami.watch.train.model.DayTrainRecord;
-import com.huami.watch.train.model.DayTrainRecordDao;
-import com.huami.watch.train.model.TrainRecord;
+import com.huami.watch.train.data.greendao.db.DayTrainRecord;
+import com.huami.watch.train.data.greendao.db.DayTrainRecordDao;
+import com.huami.watch.train.data.greendao.db.TrainRecord;
 import com.huami.watch.train.ui.activity.TrainRecordDetailActivity;
 import com.huami.watch.train.ui.event.UpdateTrainStatusEvent;
 import com.huami.watch.train.ui.widget.CustomDialog;
@@ -160,7 +161,7 @@ public class TrainTaskingFragment  extends BaseFragment{
                 map.put("dayTrainPlan",dayTrainPlan);
 
                 map.put("offfsetDays",""+offsetDays); // 偏移天数
-                RunRemind  runRemind = SAXUtils.getCurrentRunmindFromXml(getActivity(),dayTrainPlan.getRunremindId());
+                RunRemind runRemind = SAXUtils.getCurrentRunmindFromXml(getActivity(),dayTrainPlan.getRunremindId());
                 map.put("runRemind",runRemind);
                 LogUtils.print(TAG, "call map:"+map.toString());
                 subscriber.onNext(map);

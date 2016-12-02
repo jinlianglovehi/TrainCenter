@@ -10,12 +10,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.huami.watch.template.model.DayTrainPlan;
+import com.huami.watch.train.data.greendao.template.DayTrainPlan;
 import com.huami.watch.train.data.manager.DayTrainRecordManager;
 import com.huami.watch.train.data.manager.TrainRecordManager;
-import com.huami.watch.train.model.DayTrainRecord;
-import com.huami.watch.train.model.DayTrainRecordDao;
-import com.huami.watch.train.model.TrainRecord;
+import com.huami.watch.train.data.greendao.db.DayTrainRecord;
+import com.huami.watch.train.data.greendao.db.DayTrainRecordDao;
+import com.huami.watch.train.data.greendao.db.TrainRecord;
 import com.huami.watch.train.utils.Constant;
 import com.huami.watch.train.utils.DataUtils;
 import com.huami.watch.train.utils.DrawableUtils;

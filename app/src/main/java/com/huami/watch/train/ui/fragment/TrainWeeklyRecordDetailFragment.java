@@ -17,8 +17,8 @@ import com.huami.watch.train.R;
 import com.huami.watch.train.base.BaseFragment;
 import com.huami.watch.train.data.IResultCallBack;
 import com.huami.watch.train.data.manager.DayTrainRecordManager;
-import com.huami.watch.train.model.DayTrainRecord;
-import com.huami.watch.train.model.DayTrainRecordDao;
+import com.huami.watch.train.data.greendao.db.DayTrainRecord;
+import com.huami.watch.train.data.greendao.db.DayTrainRecordDao;
 import com.huami.watch.train.ui.adapter.OnItemClickListener;
 import com.huami.watch.train.ui.adapter.TrainWeeklyRecordDetailAdapter;
 import com.huami.watch.train.ui.event.UpdateTrainStatusEvent;
@@ -30,6 +30,7 @@ import com.huami.watch.train.utils.Constant;
 import com.huami.watch.train.utils.DataUtils;
 import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.RxUtils;
+import com.huami.watch.train.utils.ScrollUtils;
 import com.huami.watch.train.utils.Utils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -105,6 +106,7 @@ public class TrainWeeklyRecordDetailFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_weekly_train_record_detail,container,false);
         ButterKnife.bind(this,root);
+        ScrollUtils.setHMScrollStyle(fullScrollView);
         trainRecordTitle.setText(title);
         currentWeekNumber.setText(getResources().getStringArray(R.array.weekdays)[weekNumber]);
          manager = new FullyLinearLayoutManager(getActivity());

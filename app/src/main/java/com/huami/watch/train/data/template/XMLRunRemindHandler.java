@@ -1,6 +1,7 @@
 package com.huami.watch.train.data.template;
 
-import com.huami.watch.template.model.RunRemind;
+
+import com.huami.watch.train.data.greendao.template.RunRemind;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

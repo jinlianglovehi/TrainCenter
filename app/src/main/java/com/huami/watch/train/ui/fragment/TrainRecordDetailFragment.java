@@ -14,12 +14,12 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.huami.watch.template.model.TrainPlan;
 import com.huami.watch.train.R;
 import com.huami.watch.train.base.BaseFragment;
 import com.huami.watch.train.data.IResultCallBack;
+import com.huami.watch.train.data.greendao.template.TrainPlan;
 import com.huami.watch.train.data.manager.TrainRecordManager;
-import com.huami.watch.train.model.TrainRecord;
+import com.huami.watch.train.data.greendao.db.TrainRecord;
 import com.huami.watch.train.ui.activity.TrainCenterStatusActivity;
 import com.huami.watch.train.ui.activity.TrainWeeklyRecordDetailActivity;
 import com.huami.watch.train.ui.adapter.OnItemClickListener;
@@ -37,6 +37,7 @@ import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.RxUtils;
 import com.huami.watch.train.utils.SAXUtils;
 import com.huami.watch.train.utils.SPUtils;
+import com.huami.watch.train.utils.ScrollUtils;
 import com.huami.watch.train.utils.Utils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -124,6 +125,7 @@ public class TrainRecordDetailFragment extends BaseFragment {
         View root  =  inflater.inflate(R.layout.fragment_train_record_detail,container,false);
         ButterKnife.bind(this,root);
 
+        ScrollUtils.setHMScrollStyle(ll_scrollView);
         FullyLinearLayoutManager manager = new FullyLinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         manager.setSmoothScrollbarEnabled(true);
@@ -144,7 +146,7 @@ public class TrainRecordDetailFragment extends BaseFragment {
                 //获取的是当期那的训练任务
                 TrainRecord  trainRecord =  TrainRecordManager.getInstance().selectByPrimaryKey(trainRecordId);
 
-                TrainPlan  trainPlan = SAXUtils.getCurrentTrainPlanFromXml(getActivity(),trainRecord.getTrainPlanId());
+                TrainPlan trainPlan = SAXUtils.getCurrentTrainPlanFromXml(getActivity(),trainRecord.getTrainPlanId());
                 Map<Object,Object> map = new HashMap<Object, Object>();
                 map.put("trainRecord",trainRecord);
                 map.put("trainPlan",trainPlan);

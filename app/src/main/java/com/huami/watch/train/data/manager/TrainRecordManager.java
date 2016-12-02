@@ -2,7 +2,7 @@ package com.huami.watch.train.data.manager;
 
 
 import com.huami.watch.train.data.greendao.AbstractDatabaseManager;
-import com.huami.watch.train.model.TrainRecord;
+import com.huami.watch.train.data.greendao.db.TrainRecord;
 
 import de.greenrobot.dao.AbstractDao;
 

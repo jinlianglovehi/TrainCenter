@@ -1,17 +1,5 @@
 package com.huami.watch.train.utils;
 
-import android.content.Context;
-
-import com.huami.watch.template.model.DayTrainPlan;
-import com.huami.watch.template.model.DayTrainPlanRoot;
-import com.huami.watch.template.model.TrainPlan;
-import com.huami.watch.template.model.TrainPlanRoot;
-import com.huami.watch.template.utils.JaxUtils;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.List;
-
 /**
  * Created by jinliang on 16/11/10.
  *

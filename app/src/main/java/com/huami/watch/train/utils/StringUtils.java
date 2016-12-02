@@ -31,7 +31,6 @@ public class StringUtils {
      * @param runRemindType
      * @param param  可传递
      *               注意 rateStart,rateEnd
-     *
      * @return
      */
     public static String getDayTrainRecordCopyWrite(Context  mContext ,int runRemindType,String str, int... param){

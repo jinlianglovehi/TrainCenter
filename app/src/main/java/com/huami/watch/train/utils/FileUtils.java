@@ -6,14 +6,9 @@ package com.huami.watch.train.utils;
 
 import android.content.Context;
 
-import com.huami.watch.template.model.DayTrainPlan;
-import com.huami.watch.template.model.TrainPlan;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 文件读写的工具类

@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.huami.watch.train.base.BaseTest;
-import com.huami.watch.train.model.DayTrainRecordDao;
+import com.huami.watch.train.data.greendao.db.DayTrainRecordDao;
 import com.huami.watch.train.ui.provider.DayTrainRecordProvider;
 import com.huami.watch.train.utils.LogUtils;
 

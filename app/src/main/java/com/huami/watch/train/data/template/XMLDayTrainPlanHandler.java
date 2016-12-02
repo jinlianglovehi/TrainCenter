@@ -1,9 +1,6 @@
 package com.huami.watch.train.data.template;
 
-import android.content.Intent;
-
-import com.huami.watch.template.model.DayTrainPlan;
-import com.huami.watch.template.model.TrainPlan;
+import com.huami.watch.train.data.greendao.template.DayTrainPlan;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -11,7 +8,6 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.Pack200;
 
 /**
  * Created by jinliang on 16/11/11.

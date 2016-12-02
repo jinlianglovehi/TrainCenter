@@ -1,6 +1,7 @@
 package com.huami.watch.train.data.template;
 
-import com.huami.watch.template.model.TrainPlan;
+
+import com.huami.watch.train.data.greendao.template.TrainPlan;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

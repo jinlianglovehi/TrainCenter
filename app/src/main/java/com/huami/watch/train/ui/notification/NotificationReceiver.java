@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
 import com.huami.watch.train.R;
+import com.huami.watch.train.model.UserInfo;
 import com.huami.watch.train.utils.Constant;
 import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.SPUtils;
@@ -103,6 +104,7 @@ public class NotificationReceiver extends BroadcastReceiver {
             String trainContent = bundle.getString("tainContent");
             LogUtils.print(TAG,"trainSportType: " + sportType+",trainContent:"+ trainContent);//
             if(sportType== Constant.SPORT_TYPE_REST){
+                closeCursor(cursor);
                 return true ;
             }
             if(cursor != null && cursor.moveToFirst()) {
@@ -115,12 +117,24 @@ public class NotificationReceiver extends BroadcastReceiver {
                 LogUtils.print(TAG," id:"+id+",distance:"+distance+",rateStart:"+rateStart+",rateEnd:"+rateEnd+",dayTrainStatus:"+dayTrainStatus);
             }
 
+            closeCursor(cursor);
             if(dayTrainStatus==Constant.TRAIN_RECORD_UN_DONE){
                 return true;
             }
         }
 
         return needRemind;
+    }
+
+    /**
+     * 关闭 cursor
+     * @param cursor
+     */
+    private void closeCursor(Cursor cursor){
+        if(cursor!=null){
+            cursor.close();
+        }
+
     }
 
 }

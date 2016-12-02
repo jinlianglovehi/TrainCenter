@@ -10,13 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
-import com.huami.watch.template.model.TrainPlan;
 import com.huami.watch.train.R;
 import com.huami.watch.train.base.BaseFragment;
 import com.huami.watch.train.data.IResultCallBack;
+import com.huami.watch.train.data.greendao.template.TrainPlan;
 import com.huami.watch.train.data.manager.TrainRecordManager;
-import com.huami.watch.train.model.TrainRecord;
-import com.huami.watch.train.model.TrainRecordDao;
+import com.huami.watch.train.data.greendao.db.TrainRecord;
+import com.huami.watch.train.data.greendao.db.TrainRecordDao;
 import com.huami.watch.train.ui.activity.TrainRecordDetailActivity;
 import com.huami.watch.train.ui.adapter.OnItemClickListener;
 import com.huami.watch.train.ui.adapter.TrainPlanAdapter;
@@ -30,6 +30,7 @@ import com.huami.watch.train.utils.Constant;
 import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.RxUtils;
 import com.huami.watch.train.utils.SAXUtils;
+import com.huami.watch.train.utils.ScrollUtils;
 import com.huami.watch.train.utils.Utils;
 
 import java.util.HashMap;
@@ -80,6 +81,7 @@ public class TrainPlanSelectDetailFragment extends BaseFragment {
         View root  =  inflater.inflate(R.layout.fragment_train_plan_select_detail,container,false);
         ButterKnife.bind(this,root);
 
+        ScrollUtils.setHMScrollStyle(fullScrollView);
         //历史记录
         FullyLinearLayoutManager history_manager = new FullyLinearLayoutManager(getActivity());
         history_manager.setSmoothScrollbarEnabled(true);

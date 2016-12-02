@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
-import com.huami.watch.template.model.TrainPlan;
 import com.huami.watch.train.R;
 import com.huami.watch.train.base.BaseFragment;
 import com.huami.watch.train.data.IResultCallBack;
+import com.huami.watch.train.data.greendao.template.TrainPlan;
 import com.huami.watch.train.ui.adapter.OnItemClickListener;
 import com.huami.watch.train.ui.adapter.TrainPlanAdapter;
 import com.huami.watch.train.ui.widget.DividerItemDecoration;
@@ -21,6 +21,7 @@ import com.huami.watch.train.ui.widget.FullScrollView;
 import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.RxUtils;
 import com.huami.watch.train.utils.SAXUtils;
+import com.huami.watch.train.utils.ScrollUtils;
 import com.huami.watch.train.utils.Utils;
 
 import java.util.ArrayList;
@@ -59,6 +60,7 @@ public class TrainPlanInitSelectFragment extends BaseFragment {
         View root  =  inflater.inflate(R.layout.fragment_init_select,container,false);
         ButterKnife.bind(this,root);
 
+        ScrollUtils.setHMScrollStyle(fullScrollView);
         trainPlanList = new ArrayList<>();
         trainPlanAdapter  = new TrainPlanAdapter(getActivity(),trainPlanList);
         manager = new LinearLayoutManager(getActivity());

@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.huami.watch.template.model.DayTrainPlan;
 import com.huami.watch.train.R;
-import com.huami.watch.train.model.DayTrainRecord;
+import com.huami.watch.train.data.greendao.db.DayTrainRecord;
+import com.huami.watch.train.data.greendao.template.DayTrainPlan;
 import com.huami.watch.train.utils.Constant;
 import com.huami.watch.train.utils.DataUtils;
 import com.huami.watch.train.utils.SAXUtils;
@@ -61,7 +61,7 @@ public class TrainWeeklyRecordDetailAdapter  extends RecyclerView.Adapter<TrainW
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         DayTrainRecord currentItem = list.get(position);
         holder.trainDetailWeek.setText(DataUtils.getDateByOffsetDays(mContext,startDate,currentItem.getOffsetDays(),todayOffsetDays));
-        DayTrainPlan  dayTrainPlan = SAXUtils.getCurrentDayTrainPlan(mContext,currentItem.getTrainType(),currentItem.getOffsetDays());
+        DayTrainPlan dayTrainPlan = SAXUtils.getCurrentDayTrainPlan(mContext,currentItem.getTrainType(),currentItem.getOffsetDays());
         holder.dayTrainContent.setText(dayTrainPlan.getDesc());
         if(currentItem.getOffsetDays()<todayOffsetDays){ // 以前的
 

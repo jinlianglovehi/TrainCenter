@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.huami.watch.template.model.TrainPlan;
 import com.huami.watch.train.R;
+import com.huami.watch.train.data.greendao.template.TrainPlan;
 import com.huami.watch.train.utils.DrawableUtils;
 
 import java.util.List;

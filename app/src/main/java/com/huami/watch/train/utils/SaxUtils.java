@@ -2,9 +2,10 @@ package com.huami.watch.train.utils;
 
 import android.content.Context;
 
-import com.huami.watch.template.model.DayTrainPlan;
-import com.huami.watch.template.model.RunRemind;
-import com.huami.watch.template.model.TrainPlan;
+
+import com.huami.watch.train.data.greendao.template.DayTrainPlan;
+import com.huami.watch.train.data.greendao.template.RunRemind;
+import com.huami.watch.train.data.greendao.template.TrainPlan;
 import com.huami.watch.train.data.template.XMLDayTrainPlanHandler;
 import com.huami.watch.train.data.template.XMLRunRemindHandler;
 import com.huami.watch.train.data.template.XMLTrainPlanHandler;
@@ -88,7 +89,7 @@ public class SAXUtils {
      * @param categoryType 分类型数据
      * @return
      */
-    public  static  List<DayTrainPlan> getDayTrainPlansFromXml(Context mContext ,int categoryType){
+    public  static  List<DayTrainPlan> getDayTrainPlansFromXml(Context mContext , int categoryType){
 
         try {
             //实例化SAX工厂类
@@ -153,7 +154,7 @@ public class SAXUtils {
      * @param runmindId
      * @return
      */
-    public static RunRemind getCurrentRunmindFromXml(Context mContext ,int runmindId){
+    public static RunRemind getCurrentRunmindFromXml(Context mContext , int runmindId){
         List<RunRemind> runRemindList =getRunRemindsFromXml(mContext);
         RunRemind  currentRunRemind  = null;
         for (RunRemind item: runRemindList ) {

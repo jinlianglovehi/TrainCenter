@@ -61,7 +61,7 @@ public class UserInfoManager {
             }
         }
 
-        // TODO: 16/12/1 上线后需要修改
+        // TODO: 16/12/1 升到rom 后需要去掉
         mUserInfo = new UserInfo();
         mUserInfo.setYear(1989);
         mUserInfo.setMonth(04);

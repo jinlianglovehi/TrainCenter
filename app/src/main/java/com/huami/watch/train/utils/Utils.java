@@ -3,15 +3,14 @@ package com.huami.watch.train.utils;
 import android.content.Context;
 import android.content.Intent;
 
-import com.huami.watch.template.model.DayTrainPlan;
-import com.huami.watch.template.model.TrainPlan;
 import com.huami.watch.train.data.IResultCallBack;
+import com.huami.watch.train.data.greendao.template.DayTrainPlan;
+import com.huami.watch.train.data.greendao.template.TrainPlan;
 import com.huami.watch.train.data.manager.DayTrainRecordManager;
 import com.huami.watch.train.data.manager.TrainRecordManager;
-import com.huami.watch.train.model.DayTrainRecord;
-import com.huami.watch.train.model.DayTrainRecordDao;
-import com.huami.watch.train.model.TrainRecord;
-import com.huami.watch.train.model.TrainRecordDao;
+import com.huami.watch.train.data.greendao.db.DayTrainRecord;
+import com.huami.watch.train.data.greendao.db.DayTrainRecordDao;
+import com.huami.watch.train.data.greendao.db.TrainRecord;
 import com.huami.watch.train.model.UserInfo;
 import com.huami.watch.train.ui.activity.TrainWidgetRemindActivity;
 
