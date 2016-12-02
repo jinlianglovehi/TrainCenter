@@ -1,18 +1,28 @@
 package com.huami.watch.train.ui.activity;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.huami.watch.train.R;
 import com.huami.watch.train.base.BaseActivity;
+import com.huami.watch.train.data.IResultCallBack;
+import com.huami.watch.train.data.greendao.db.TrainRecord;
+import com.huami.watch.train.data.manager.TrainRecordManager;
 import com.huami.watch.train.ui.fragment.TrainNoTaskFragment;
 import com.huami.watch.train.ui.fragment.TrainTaskingFragment;
 import com.huami.watch.train.ui.fragment.TrainUnStartFragment;
-import com.huami.watch.train.ui.notification.NotificationService;
+import com.huami.watch.train.utils.DataUtils;
 import com.huami.watch.train.utils.FragmentUtils;
 import com.huami.watch.train.utils.LogUtils;
+import com.huami.watch.train.utils.RxUtils;
 import com.huami.watch.train.utils.SPUtils;
+import com.huami.watch.train.utils.Utils;
+
+import java.util.Date;
+
+import rx.Observable;
+import rx.Subscriber;
 
 /**
  * Created by jinliang on 16/11/9.
@@ -22,9 +32,6 @@ import com.huami.watch.train.utils.SPUtils;
 public class TrainCenterStatusActivity extends BaseActivity {
 
  private static final String TAG = TrainCenterStatusActivity.class.getSimpleName();
-//    @Inject
-//    TrainCenterInitPresenter mPresenter;
-//
 
     private int train_status = -1 ;
 
@@ -32,8 +39,90 @@ public class TrainCenterStatusActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_container);
+//        checkTrainRecordExpire(this);
         train_status = SPUtils.getTrainStatus(this);
         initPage();
+    }
+
+
+    /**
+     * 检查是否过期
+     */
+    private void checkTrainRecordExpire(final Context mContext){
+        LogUtils.print(TAG, "checkTrainRecordExpire");
+        RxUtils.operate(new Observable.OnSubscribe<Boolean>() {
+            @Override
+            public void call(Subscriber<? super Boolean> subscriber) {
+                LogUtils.print(TAG, "call");
+                int  train_status = SPUtils.getTrainStatus(mContext);
+                if(train_status==SPUtils.TRAIN_STATUS_TASKING){
+                    Long currentTrainRecordId =  SPUtils.getCurrentTrainRecordId(mContext);
+                    TrainRecord trainRecord = TrainRecordManager.getInstance().selectByPrimaryKey(currentTrainRecordId);
+                    int offset = DataUtils.getOffsetDaysFromStartData(trainRecord.getStartData(),new Date());
+
+                    boolean trainRecordExpire  = offset>(trainRecord.getTotalDays()-1) ;// 是否过期
+                    LogUtils.print(TAG, "call checkTrainRecordExpire: offsetDays:"+ offset
+                            +",trainRecodId:"+ trainRecord.getId()
+                            +",expireResult:"+trainRecordExpire
+
+                    );
+                    subscriber.onNext(trainRecordExpire);
+                }else {
+                    subscriber.onNext(false);
+                }
+                subscriber.onCompleted();
+            }
+        }, new IResultCallBack<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                LogUtils.print(TAG, "onSuccess " + result);
+                if(result){// 过期
+                        LogUtils.print(TAG, "onSuccess trainStatus:"+train_status);
+                        train_status = SPUtils.TRAIN_STATUS_HAS_NO_TASK;
+                        handlerTrainRecordExpire(mContext);
+                         initPage();
+                }else {// 不过期
+                    train_status = SPUtils.getTrainStatus(mContext);
+                    initPage();
+                }
+
+            }
+
+            @Override
+            public void onFail(Boolean b, String msg) {
+                LogUtils.print(TAG, "onFail  boolean:"+b +",msg:"+msg);
+
+            }
+        });
+
+
+    }
+
+
+    private void handlerTrainRecordExpire(final Context mContext ){
+
+        RxUtils.operate(new Observable.OnSubscribe<Boolean>() {
+            @Override
+            public void call(Subscriber<? super Boolean> subscriber) {
+                boolean result = Utils.expireAutoFinishTrainRecord(mContext);
+                subscriber.onNext(result);
+                subscriber.onCompleted();
+            }
+        }, new IResultCallBack<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                LogUtils.print(TAG, "  handlerTrainRecordExpire  onSuccess  result:"+ result);
+            }
+
+            @Override
+            public void onFail(Boolean result, String msg) {
+                LogUtils.print(TAG, "onFail  result:"+result +",msg:"+msg);
+
+            }
+        });
+
+
+
     }
 
     @Override
@@ -67,6 +156,7 @@ public class TrainCenterStatusActivity extends BaseActivity {
                 break;
         }
     }
+
 
     /**
      * 尚未参加过的训练的fragmet Init

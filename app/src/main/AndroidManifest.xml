@@ -46,7 +46,7 @@
         <activity android:name=".ui.activity.TrainWidgetRemindActivity" />
 
 
-        <!--不死进程-->
+        <!--常驻进程-->
         <service android:name=".ui.notification.NotificationService"
             android:process=".notificationmessage"
             />
@@ -54,19 +54,26 @@
 
         <!--处理的是-->
         <receiver android:name=".ui.notification.NotificationReceiver">
+            <!--每日五点 当日的训练状态-->
             <intent-filter>
-                <action android:name="com.huami.watch.train.ui.notification.notificationservice"/>
+                <action android:name="com.huami.watch.train.broadcast.daytrainrecord"/>
             </intent-filter>
+
+            <!--修改训练记录状态-->
+            <intent-filter>
+                <action android:name="com.huami.watch.train.broadcast.finishtrainrecord"/>
+            </intent-filter>
+            <!--重启机子-->
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
 
-            <intent-filter >
-                <action android:name="android.intent.action.MEDIA_MOUNTED" />
-                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
-                <data android:scheme="file" >
-                </data>
-            </intent-filter>
+            <!--<intent-filter >-->
+                <!--<action android:name="android.intent.action.MEDIA_MOUNTED" />-->
+                <!--<action android:name="android.intent.action.MEDIA_UNMOUNTED" />-->
+                <!--<data android:scheme="file" >-->
+                <!--</data>-->
+            <!--</intent-filter>-->
         </receiver>
 
         <!--向外提供服务-->

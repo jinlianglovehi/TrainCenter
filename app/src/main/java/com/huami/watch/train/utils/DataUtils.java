@@ -37,6 +37,18 @@ public class DataUtils {
         return (int) ((toCalendar.getTime().getTime() - fromCalendar.getTime().getTime()) / (1000 * 60 * 60 * 24));
     }
 
+    /**
+     * 获取偏移的天数
+     * @param startDate
+     * @param offset
+     * @return
+     */
+    public static Date getOffsetDateFromStartDate(Date startDate,int offset){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startDate);
+        calendar.add(Calendar.DAY_OF_MONTH, offset);
+        return calendar.getTime();
+    }
 
     /**
      *  计算从 startDate 到 endDate 第几周

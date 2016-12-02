@@ -134,8 +134,11 @@ public class Constant {
     //其中机子需要重启提醒的常驻进程
     public static final String BROCASTER_BOOT_COMPLETED ="android.intent.action.BOOT_COMPLETED" ;
 
-    // 监听来自服务
-    public static final String BROCASTER_FROM_NOTIFICATION_SERVICE = "com.huami.watch.train.ui.notification.notificationservice";
+    // 每日训练提醒
+    public static final String BROCASTER_FROM_DAY_TRAIN_REMIND = "com.huami.watch.train.broadcast.daytrainrecord";
+
+    // 标记完成任务。
+    public static final String BROCASTER_FROM_FINISH_TRAIN_RECORD = "com.huami.watch.train.broadcast.finishtrainrecord" ;
 
 
     public static final String BROCASTER_MEDIA_MOUNTED = "android.intent.action.MEDIA_MOUNTED" ;

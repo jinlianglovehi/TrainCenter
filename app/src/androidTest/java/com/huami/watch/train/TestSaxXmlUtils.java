@@ -4,8 +4,7 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.huami.watch.template.model.TrainPlan;
-import com.huami.watch.train.data.template.XMLTrainPlanHandler;
+import com.huami.watch.train.data.greendao.template.TrainPlan;
 import com.huami.watch.train.utils.Constant;
 import com.huami.watch.train.utils.FileUtils;
 import com.huami.watch.train.utils.SAXUtils;
@@ -16,13 +15,10 @@ import org.junit.runner.RunWith;
 import org.xml.sax.helpers.AttributesImpl;
 
 import java.io.FileWriter;
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.sax.SAXTransformerFactory;

@@ -15,10 +15,15 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
 import com.huami.watch.train.R;
+import com.huami.watch.train.data.IResultCallBack;
 import com.huami.watch.train.model.UserInfo;
 import com.huami.watch.train.utils.Constant;
 import com.huami.watch.train.utils.LogUtils;
+import com.huami.watch.train.utils.RxUtils;
 import com.huami.watch.train.utils.SPUtils;
+
+import rx.Observable;
+import rx.Subscriber;
 
 /**
  * Created by jinliang on 16/11/28.
@@ -44,41 +49,72 @@ public class NotificationReceiver extends BroadcastReceiver {
                 LogUtils.print(TAG, "  start notification service process ");
                 context.startService(new Intent(context,NotificationService.class));
             }
-        }else if(Constant.BROCASTER_FROM_NOTIFICATION_SERVICE.equalsIgnoreCase(action)){
+        }else if(Constant.BROCASTER_FROM_DAY_TRAIN_REMIND.equalsIgnoreCase(action)){//每日训练状态提醒
             LogUtils.print(TAG, " trainNotification onReceive");
-            sendNotification(context);
+            // 处理发送今日提醒
+            selectAndSendTodayNeedRemind(context);
+        }else if(Constant.BROCASTER_FROM_FINISH_TRAIN_RECORD.equalsIgnoreCase(action)){//修改训练记录完成状态
+
+
+
         }
+    }
+
+
+    /**
+     * 发送今日提醒通知
+     * @param mContext
+     */
+    private void sendDayTrainRecoedNotification(Context mContext){
+        LogUtils.print(TAG, " trainNotification sendNotification");
+        notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+        builder = new NotificationCompat.Builder(mContext);
+        builder.setContentTitle(mContext.getString(R.string.notification_title));
+        builder.setContentText(mContext.getString(R.string.notificaiton_train_content));
+        builder.setSmallIcon(R.mipmap.training_notify_icon);
+
+        Bitmap background = ((BitmapDrawable) mContext.getDrawable(R.mipmap.lau_notify_icon_training_bg)).getBitmap();
+        Bundle extras = new Bundle();
+        extras.putBoolean("hm_vibrator", true);
+        builder.setExtras(extras);
+        builder.extend(new NotificationCompat.WearableExtender().setBackground(background));
+
+        //构建 发出通知
+        Notification notification = builder.build();
+        notificationManager.notify(0, notification);
+
+        LogUtils.print(TAG, " trainNotification test notification game over ");
     }
 
     /**
-     * 发送通知
-     * @param context
+     * 查询今天是否需要提醒
+     * @param mContext
      */
-    private void sendNotification(Context context ){
+    private void selectAndSendTodayNeedRemind(final Context mContext){
 
-        if(isTodayNeedRemind(context)) {
-            LogUtils.print(TAG, " trainNotification sendNotification");
-            notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            builder = new NotificationCompat.Builder(context);
-            builder.setContentTitle(context.getString(R.string.notification_title));
-            builder.setContentText(context.getString(R.string.notificaiton_train_content));
-            builder.setSmallIcon(R.mipmap.training_notify_icon);
+        RxUtils.operate(new Observable.OnSubscribe<Boolean>() {
+            @Override
+            public void call(Subscriber<? super Boolean> subscriber) {
+                boolean result = isTodayNeedRemind(mContext);
+                subscriber.onNext(result);
+                subscriber.onCompleted();
+            }
+        }, new IResultCallBack<Boolean>() {
+            @Override
+            public void onSuccess(Boolean aBoolean) {
+                LogUtils.print(TAG, "onSuccess  selectTodayNeedRemind:"+ aBoolean);
+                if(aBoolean){
+                    sendDayTrainRecoedNotification(mContext);
+                }
+            }
 
-            Bitmap background = ((BitmapDrawable) context.getDrawable(R.mipmap.lau_notify_icon_training_bg)).getBitmap();
-            Bundle extras = new Bundle();
-            extras.putBoolean("hm_vibrator", true);
-            builder.setExtras(extras);
-            builder.extend(new NotificationCompat.WearableExtender().setBackground(background));
+            @Override
+            public void onFail(Boolean aBoolean, String msg) {
+                LogUtils.print(TAG, "onFail selectTodayNeedRemind aBoolean:"+aBoolean +",msg:"+msg);
 
-            //构建 发出通知
-            Notification notification = builder.build();
-            notificationManager.notify(0, notification);
-
-            LogUtils.print(TAG, " trainNotification test notification game over ");
-        }
-
+            }
+        });
     }
-
     /**
      * 查询今天是否需要弹出通知内容
      * @param context

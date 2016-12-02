@@ -1,7 +1,7 @@
 package com.huami.watch.train.textxml;
 
-import com.huami.watch.template.model.RunRemind;
 import com.huami.watch.train.base.BaseTest;
+import com.huami.watch.train.data.greendao.template.RunRemind;
 import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.SAXUtils;
 

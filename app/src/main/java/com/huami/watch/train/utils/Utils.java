@@ -2,6 +2,7 @@ package com.huami.watch.train.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.format.DateUtils;
 
 import com.huami.watch.train.data.IResultCallBack;
 import com.huami.watch.train.data.greendao.template.DayTrainPlan;
@@ -70,6 +71,8 @@ public class Utils {
 
         trainRecord.setTrainPlanId(trainPlan.getId()); // 关联的是训练计划的id
         trainRecord.setStartData(new Date());// 设置开始时间
+        // 预期中结束的天数
+        trainRecord.setEndData(DataUtils.getOffsetDateFromStartDate(new Date(),trainPlan.getTotalDays()-1));
 
         trainRecord.setTrainStatus(Constant.TRAIN_RECORD_UN_DONE);// 设置训练状态
         trainRecord.setTrainTotalLength(0d);
@@ -346,5 +349,26 @@ public class Utils {
 
 
     }
+
+
+    /**
+     * 过期自动结束训练记录
+     * @param mContext
+     */
+    public  static boolean expireAutoFinishTrainRecord(Context mContext){
+        boolean result = false ;
+        Long currentTrainRecordId =  SPUtils.getCurrentTrainRecordId(mContext);
+        TrainRecord trainRecord = TrainRecordManager.getInstance().selectByPrimaryKey(currentTrainRecordId);
+        int offset = DataUtils.getOffsetDaysFromStartData(trainRecord.getStartData(),new Date());
+        boolean trainRecordExpire  = offset>(trainRecord.getTotalDays()-1) ;// 是否过期
+        if(trainRecordExpire){// 如果过期
+            SPUtils.setCurrentTrainRecordId(mContext, -1l);
+            SPUtils.setTrainStatus(mContext, SPUtils.TRAIN_STATUS_HAS_NO_TASK);
+            trainRecord.setTrainStatus(Constant.TRAIN_RECORD_DONE);
+            result = TrainRecordManager.getInstance().update(trainRecord);
+        }
+        return result;
+    }
+
 
 }

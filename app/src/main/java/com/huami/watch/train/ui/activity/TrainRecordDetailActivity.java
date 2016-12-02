@@ -6,9 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.huami.watch.train.R;
 import com.huami.watch.train.base.BaseActivity;
-import com.huami.watch.train.ui.fragment.TrainPlanInitSelectFragment;
 import com.huami.watch.train.ui.fragment.TrainRecordDetailFragment;
-import com.huami.watch.train.utils.Constant;
 
 /**
  * Created by jinliang on 16/11/15.
