@@ -53,6 +53,7 @@ public class AssignPlanDialog extends Dialog {
             if(trainContent!=null){
                 textView.setText(trainContent);
             }
+
             dialog.setContentView(layout);
             return dialog;
         }
