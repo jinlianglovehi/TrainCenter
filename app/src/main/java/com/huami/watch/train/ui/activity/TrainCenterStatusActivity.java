@@ -48,88 +48,90 @@ public class TrainCenterStatusActivity extends BaseActivity {
     /**
      * 检查是否过期
      */
-    private void checkTrainRecordExpire(final Context mContext){
-        LogUtils.print(TAG, "checkTrainRecordExpire");
-        RxUtils.operate(new Observable.OnSubscribe<Boolean>() {
-            @Override
-            public void call(Subscriber<? super Boolean> subscriber) {
-                LogUtils.print(TAG, "call");
-                int  train_status = SPUtils.getTrainStatus(mContext);
-                if(train_status==SPUtils.TRAIN_STATUS_TASKING){
-                    Long currentTrainRecordId =  SPUtils.getCurrentTrainRecordId(mContext);
-                    TrainRecord trainRecord = TrainRecordManager.getInstance().selectByPrimaryKey(currentTrainRecordId);
-                    int offset = DataUtils.getOffsetDaysFromStartData(trainRecord.getStartData(),new Date());
-
-                    boolean trainRecordExpire  = offset>(trainRecord.getTotalDays()-1) ;// 是否过期
-                    LogUtils.print(TAG, "call checkTrainRecordExpire: offsetDays:"+ offset
-                            +",trainRecodId:"+ trainRecord.getId()
-                            +",expireResult:"+trainRecordExpire
-
-                    );
-                    subscriber.onNext(trainRecordExpire);
-                }else {
-                    subscriber.onNext(false);
-                }
-                subscriber.onCompleted();
-            }
-        }, new IResultCallBack<Boolean>() {
-            @Override
-            public void onSuccess(Boolean result) {
-                LogUtils.print(TAG, "onSuccess " + result);
-                if(result){// 过期
-                        LogUtils.print(TAG, "onSuccess trainStatus:"+train_status);
-                        train_status = SPUtils.TRAIN_STATUS_HAS_NO_TASK;
-                        handlerTrainRecordExpire(mContext);
-                         initPage();
-                }else {// 不过期
-                    train_status = SPUtils.getTrainStatus(mContext);
-                    initPage();
-                }
-
-            }
-
-            @Override
-            public void onFail(Boolean b, String msg) {
-                LogUtils.print(TAG, "onFail  boolean:"+b +",msg:"+msg);
-
-            }
-        });
-
-
-    }
-
-
-    private void handlerTrainRecordExpire(final Context mContext ){
-
-        RxUtils.operate(new Observable.OnSubscribe<Boolean>() {
-            @Override
-            public void call(Subscriber<? super Boolean> subscriber) {
-                boolean result = Utils.expireAutoFinishTrainRecord(mContext);
-                subscriber.onNext(result);
-                subscriber.onCompleted();
-            }
-        }, new IResultCallBack<Boolean>() {
-            @Override
-            public void onSuccess(Boolean result) {
-                LogUtils.print(TAG, "  handlerTrainRecordExpire  onSuccess  result:"+ result);
-            }
-
-            @Override
-            public void onFail(Boolean result, String msg) {
-                LogUtils.print(TAG, "onFail  result:"+result +",msg:"+msg);
-
-            }
-        });
-
-
-
-    }
+//    private void checkTrainRecordExpire(final Context mContext){
+//        LogUtils.print(TAG, "checkTrainRecordExpire");
+//        RxUtils.operate(new Observable.OnSubscribe<Boolean>() {
+//            @Override
+//            public void call(Subscriber<? super Boolean> subscriber) {
+//                LogUtils.print(TAG, "call");
+//                int  train_status = SPUtils.getTrainStatus(mContext);
+//                if(train_status==SPUtils.TRAIN_STATUS_TASKING){
+//                    Long currentTrainRecordId =  SPUtils.getCurrentTrainRecordId(mContext);
+//                    TrainRecord trainRecord = TrainRecordManager.getInstance().selectByPrimaryKey(currentTrainRecordId);
+//                    int offset = DataUtils.getOffsetDaysFromStartData(trainRecord.getStartData(),new Date());
+//
+//                    boolean trainRecordExpire  = offset>(trainRecord.getTotalDays()-1) ;// 是否过期
+//                    LogUtils.print(TAG, "call checkTrainRecordExpire: offsetDays:"+ offset
+//                            +",trainRecodId:"+ trainRecord.getId()
+//                            +",expireResult:"+trainRecordExpire
+//
+//                    );
+//                    subscriber.onNext(trainRecordExpire);
+//                }else {
+//                    subscriber.onNext(false);
+//                }
+//                subscriber.onCompleted();
+//            }
+//        }, new IResultCallBack<Boolean>() {
+//            @Override
+//            public void onSuccess(Boolean result) {
+//                LogUtils.print(TAG, "onSuccess " + result);
+//                if(result){// 过期
+//                        LogUtils.print(TAG, "onSuccess trainStatus:"+train_status);
+//                        train_status = SPUtils.TRAIN_STATUS_HAS_NO_TASK;
+//                        handlerTrainRecordExpire(mContext);
+//                         initPage();
+//                }else {// 不过期
+//                    train_status = SPUtils.getTrainStatus(mContext);
+//                    initPage();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFail(Boolean b, String msg) {
+//                LogUtils.print(TAG, "onFail  boolean:"+b +",msg:"+msg);
+//
+//            }
+//        });
+//
+//
+//    }
+//
+//
+//    private void handlerTrainRecordExpire(final Context mContext ){
+//
+//        RxUtils.operate(new Observable.OnSubscribe<Boolean>() {
+//            @Override
+//            public void call(Subscriber<? super Boolean> subscriber) {
+//                boolean result = Utils.expireAutoFinishTrainRecord(mContext);
+//                subscriber.onNext(result);
+//                subscriber.onCompleted();
+//            }
+//        }, new IResultCallBack<Boolean>() {
+//            @Override
+//            public void onSuccess(Boolean result) {
+//                LogUtils.print(TAG, "  handlerTrainRecordExpire  onSuccess  result:"+ result);
+//            }
+//
+//            @Override
+//            public void onFail(Boolean result, String msg) {
+//                LogUtils.print(TAG, "onFail  result:"+result +",msg:"+msg);
+//
+//            }
+//        });
+//
+//
+//
+//    }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        LogUtils.print(TAG, " trainStatus:"+ train_status);
         if(train_status>-1 && train_status!=SPUtils.getTrainStatus(this)){
+            LogUtils.print(TAG, "onResume  update data ");
+            train_status = SPUtils.getTrainStatus(this);
             initPage();
         }
     }

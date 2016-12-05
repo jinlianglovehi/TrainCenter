@@ -299,6 +299,8 @@ public class TrainRecordDetailFragment extends BaseFragment {
                 int currentOffsetDay = DataUtils.getOffsetDaysToToday(currentTrainRecord.getStartData().getTime()/1000);
                 LogUtils.print(TAG, "autoMarkOffsetDays:"+ currentOffsetDay);
                 Utils.autoMarkedDayTrainRecords(currentTrainRecord,currentOffsetDay);//将剩余的没有完成的训练记录标记为完成
+                SPUtils.setTrainStatus(getActivity(),SPUtils.TRAIN_STATUS_HAS_NO_TASK);
+                SPUtils.setCurrentTrainRecordId(getActivity(),-1L);
                 subscriber.onNext(insertStatus);
                 subscriber.onCompleted();
             }
@@ -309,8 +311,7 @@ public class TrainRecordDetailFragment extends BaseFragment {
                 EventBus.getDefault().post(new TrainRecordFinishEvent());
                 if(aBoolean){
                     dialog.dismiss();
-                    SPUtils.setTrainStatus(getActivity(),SPUtils.TRAIN_STATUS_HAS_NO_TASK);
-                    SPUtils.setCurrentTrainRecordId(getActivity(),-1L);
+
                     ActivityUtils.startActivity(getActivity(), TrainCenterStatusActivity.class);
                     getActivity().finish();
 

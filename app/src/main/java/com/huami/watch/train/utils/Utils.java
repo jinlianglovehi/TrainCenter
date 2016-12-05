@@ -356,16 +356,16 @@ public class Utils {
      * @param mContext
      */
     public  static boolean expireAutoFinishTrainRecord(Context mContext){
-        boolean result = false ;
+        boolean result = true ;
         Long currentTrainRecordId =  SPUtils.getCurrentTrainRecordId(mContext);
         TrainRecord trainRecord = TrainRecordManager.getInstance().selectByPrimaryKey(currentTrainRecordId);
         int offset = DataUtils.getOffsetDaysFromStartData(trainRecord.getStartData(),new Date());
         boolean trainRecordExpire  = offset>(trainRecord.getTotalDays()-1) ;// 是否过期
         if(trainRecordExpire){// 如果过期
-            SPUtils.setCurrentTrainRecordId(mContext, -1l);
-            SPUtils.setTrainStatus(mContext, SPUtils.TRAIN_STATUS_HAS_NO_TASK);
             trainRecord.setTrainStatus(Constant.TRAIN_RECORD_DONE);
             result = TrainRecordManager.getInstance().update(trainRecord);
+            SPUtils.setCurrentTrainRecordId(mContext, -1l);
+            SPUtils.setTrainStatus(mContext, SPUtils.TRAIN_STATUS_HAS_NO_TASK);
         }
         return result;
     }

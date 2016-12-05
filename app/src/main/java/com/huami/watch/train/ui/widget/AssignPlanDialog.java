@@ -43,11 +43,11 @@ public class AssignPlanDialog extends Dialog {
         public AssignPlanDialog create() {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            // instantiate the dialog with the custom Theme
             final AssignPlanDialog dialog = new AssignPlanDialog(context, R.style.base_dialog);
             View layout = inflater.inflate(R.layout.dialog_assing_plan, null);
+
             dialog.addContentView(layout, new LayoutParams(
-                    LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+                    LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
             TextView textView = (TextView) layout.findViewById(R.id.train_plan_remind);
             if(trainContent!=null){

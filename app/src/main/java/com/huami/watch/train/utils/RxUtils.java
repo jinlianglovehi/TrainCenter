@@ -2,6 +2,8 @@ package com.huami.watch.train.utils;
 
 import com.huami.watch.train.data.IResultCallBack;
 
+import java.util.concurrent.TimeUnit;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -46,6 +48,44 @@ public class RxUtils {
         return  subscription;
     }
 
+
+    /**
+     * 延迟任务执行过程
+     * @param subscribe
+     * @param callBack
+     * @param delaySeconds  延迟毫秒数据
+     * @param <T>
+     * @return
+     */
+    public static<T> Subscription operateDelayTask(Observable.OnSubscribe<T> subscribe,
+                                                   final IResultCallBack<T> callBack,
+                                                   int  delaySeconds
+                                                   ){
+        final Subscription subscription =   Observable.timer(delaySeconds, TimeUnit.SECONDS).create(subscribe).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<T>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        callBack.onFail(null,e.getLocalizedMessage());
+                    }
+
+                    @Override
+                    public void onNext(T t) {
+                        if(callBack==null){
+                            return ;
+                        }
+                        callBack.onSuccess(t);
+
+                    }
+                }) ;
+
+        return  subscription;
+
+
+    }
 
     public static void unsubscribe(Subscription subscription)
     {

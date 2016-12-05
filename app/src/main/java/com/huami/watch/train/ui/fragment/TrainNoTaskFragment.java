@@ -39,7 +39,7 @@ public class TrainNoTaskFragment extends BaseFragment {
 
     }
 
-    @OnClick(R.id.icon_train_plan)
+    @OnClick(R.id.rl_container)
     public void initEvent() {
         LogUtils.print(TAG, "initEvent  jump to trainPlanSelctActivity  ");
         ActivityUtils.startActivity(getActivity(), TrainPlanSelectActivity.class);

@@ -18,12 +18,12 @@
         android:theme="@style/train_center_theme">
 
 
-        <!--<activity android:name=".ui.test.TestProvider">-->
+        <activity android:name=".ui.test.TestProvider">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
-        <!--</activity>-->
+        </activity>
 
         <activity android:name=".ui.activity.TrainCenterStatusActivity"
               android:launchMode="singleTop">

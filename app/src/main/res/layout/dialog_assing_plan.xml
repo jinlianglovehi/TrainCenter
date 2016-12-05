@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:background="@color/default_background_black"
     android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/icon_notify_complete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+
+    <View
+        android:id="@+id/middle_line"
+        android:layout_width="match_parent"
         android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:src="@mipmap/training_notify_completed"
-        />
+        android:visibility="invisible"
+        android:layout_height="1dp"/>
+
 
     <TextView
         android:id="@+id/train_plan_remind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/middle_line"
         android:layout_marginTop="10dp"
         android:textAlignment="center"
-        android:singleLine="false"
-        android:layout_below="@id/icon_notify_complete"
-        android:layout_gravity="center_horizontal"
-        android:layout_centerHorizontal="true"
         android:text="@string/assing_train_plan"
         />
+
+    <ImageView
+        android:id="@+id/icon_notify_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/training_notify_completed"
+        android:layout_above="@+id/middle_line"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

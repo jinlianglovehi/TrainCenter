@@ -22,6 +22,7 @@ import com.huami.watch.train.utils.DrawableUtils;
 import com.huami.watch.train.utils.LogUtils;
 import com.huami.watch.train.utils.SAXUtils;
 import com.huami.watch.train.utils.SPUtils;
+import com.huami.watch.train.utils.Utils;
 
 /**
  * Created by jinliang on 16/11/24.
@@ -39,14 +40,18 @@ public class DayTrainRecordProvider extends ContentProvider {
 
     public static final int GET_TODAY_TRAIN_TASK = 1 ;// 查询今天的训练任务
     public static final int FINISH_TODAY_TRAIN_STATUS = 2 ;// 修改今天训练的状态
-    public static final int GET_TODAY_TRAIN_STATUS = 3 ;// 获取今天的任务状态
+    public static final int AUTO_DEAL_EXPIRED_DATA_STATUS = 3 ;// 修改过期数据状态
+
+
+
 
 
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(AUTHORITY, "getTodayTrainTask", GET_TODAY_TRAIN_TASK);
         uriMatcher.addURI(AUTHORITY,"finishTodayTrainTask/#",FINISH_TODAY_TRAIN_STATUS);
-//        uriMatcher.addURI(AUTHORITY,"getTodayTrainStatus",GET_TODAY_TRAIN_STATUS);
+        uriMatcher.addURI(AUTHORITY,"autoDealExpiredData",AUTO_DEAL_EXPIRED_DATA_STATUS); // 自动根据日期处理过期数据
+
 
         sql_select_current_task = " select _id , DISTANCE ,RATE_START,RATE_END,DAY_TRAIN_STATUS " +
                 "from DayTrainRecord where TRAIN_RECORD_ID=?  and DAY_TRAIN_STATUS = 0 and OFFSET_DAYS=? ";
@@ -103,6 +108,15 @@ public class DayTrainRecordProvider extends ContentProvider {
     @Override
     public String getType(Uri uri) {
         int result = uriMatcher.match(uri);
+// TODO: 16/12/5  
+        switch (result){
+            case GET_TODAY_TRAIN_TASK:// 获取今日任务
+                break;
+            case FINISH_TODAY_TRAIN_STATUS:// 完成进入状态
+                break;
+            case AUTO_DEAL_EXPIRED_DATA_STATUS:// 自动处理过期数据
+                break;
+        }
         LogUtils.print(TAG, "getType  url:"+uri.toString() +",matchResult:"+result);
         return null;
     }
@@ -128,11 +142,38 @@ public class DayTrainRecordProvider extends ContentProvider {
         LogUtils.print(TAG, " matchResult:"+ uriMatcher.match(uri));
         switch (uriMatcher.match(uri)){
             case FINISH_TODAY_TRAIN_STATUS:
-               result = updateDayTrainRecordStatus(uri);
+                result = updateDayTrainRecordStatus(uri);
+                break;
+            case AUTO_DEAL_EXPIRED_DATA_STATUS:
+                result =autoDealExpiredData();//自定处理过期数据
                 break;
         }
         return result;
     }
+
+    /**
+     * 处理过期数据
+     * @return
+     */
+    private int autoDealExpiredData(){
+        int currentTrainStatus = SPUtils.getTrainStatus(getContext());
+        int result = 0 ;
+        switch (currentTrainStatus){
+            case SPUtils.TRAIN_STATUS_INIT:
+                result = 1 ;
+                break;
+            case SPUtils.TRAIN_STATUS_TASKING:
+                result = Utils.expireAutoFinishTrainRecord(getContext())==true?1:0 ;// 过期自定完成
+                break;
+            case SPUtils.TRAIN_STATUS_HAS_NO_TASK:
+                result = 1 ;
+                break;
+        }
+
+        return result;
+
+    }
+
 
     private int updateDayTrainRecordStatus(Uri uri){
         Long dayTrainRecordId =  ContentUris.parseId(uri);

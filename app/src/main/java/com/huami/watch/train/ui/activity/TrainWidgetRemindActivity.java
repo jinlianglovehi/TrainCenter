@@ -172,7 +172,7 @@ public class TrainWidgetRemindActivity extends BaseActivity {
                                     LogUtils.print(TAG, "run");
                                     try {
                                         LogUtils.print(TAG, "run");
-                                        Thread.sleep(2000);
+                                        Thread.sleep(5000);
                                     } catch (InterruptedException e) {
                                         e.printStackTrace();
                                     }

@@ -39,9 +39,23 @@ public class TestProvider extends BaseActivity {
 
 //startNotificationService();
 
-        queryTodayTask();
+//        queryTodayTask();
+        testAutoFinishExpiredData();
     }
 
+
+    /**
+     * 测试自动完成过期数据
+     */
+    private void testAutoFinishExpiredData(){
+
+        ContentResolver resolver =  getContentResolver();
+        Uri uri = Uri.parse("content://com.huami.watch.train.ui.provider.dayTrainRecordProvider/autoDealExpiredData");
+       int result =  resolver.update(uri,null,null,null);
+        LogUtils.print(TAG, "testAutoFinishExpiredData  result:"+ result);
+
+
+    }
     private void startNotificationService(){
 
         String packageName = "com.huami.watch.train.ui.notification";//需要开启服务的app包名

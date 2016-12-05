@@ -50,16 +50,24 @@ public class NotificationReceiver extends BroadcastReceiver {
                 context.startService(new Intent(context,NotificationService.class));
             }
         }else if(Constant.BROCASTER_FROM_DAY_TRAIN_REMIND.equalsIgnoreCase(action)){//每日训练状态提醒
-            LogUtils.print(TAG, " trainNotification onReceive");
+            LogUtils.print(TAG, " dayTrainRemind onReceive");
             // 处理发送今日提醒
             selectAndSendTodayNeedRemind(context);
-        }else if(Constant.BROCASTER_FROM_FINISH_TRAIN_RECORD.equalsIgnoreCase(action)){//修改训练记录完成状态
-
-
-
+        }else if(Constant.BROCASTER_FROM_FINISH_TRAIN_RECORD.equalsIgnoreCase(action)){
+            LogUtils.print(TAG, "finish TrainRecord onReceive");
+            //修改训练记录完成状态
+            autoFinishExpireData(context);
         }
     }
 
+
+
+    private void autoFinishExpireData(Context mContext){
+        ContentResolver resolver =  mContext.getContentResolver();
+        Uri uri = Uri.parse("content://com.huami.watch.train.ui.provider.dayTrainRecordProvider/autoDealExpiredData");
+        int result =  resolver.update(uri,null,null,null);
+        LogUtils.print(TAG, " autoFinishExpireData  result:"+ result);
+    }
 
     /**
      * 发送今日提醒通知

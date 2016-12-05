@@ -98,9 +98,12 @@ public class CustomDialog extends Dialog {
             // instantiate the dialog with the custom Theme
             final CustomDialog dialog = new CustomDialog(context, R.style.base_dialog);
             View layout = inflater.inflate(R.layout.dialog_day_train_plan_mark, null);
+//            dialog.addContentView(layout, new LayoutParams(
+//                    LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+
             dialog.addContentView(layout, new LayoutParams(
-                    LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-            // set the dialog title
+                    LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+            // set the dialog
             // set the confirm button
             if (positiveButtonText != null) {
                 ((TextView) layout.findViewById(R.id.txt_confirm))

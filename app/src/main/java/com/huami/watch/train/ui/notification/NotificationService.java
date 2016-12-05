@@ -39,7 +39,13 @@ public class NotificationService extends Service {
     public void onCreate() {
         super.onCreate();
         LogUtils.print(TAG, "trainNotification onCreate");
-        createOneAlarm(this,dayTrainRemind_hour,dayTrainRemind_minute,Constant.BROCASTER_FROM_DAY_TRAIN_REMIND,REQUEST_DAY_TRAIN_REMIND);
+        // 每日训练=状态提醒
+        createOneAlarm(this,dayTrainRemind_hour,dayTrainRemind_minute,
+                Constant.BROCASTER_FROM_DAY_TRAIN_REMIND,REQUEST_DAY_TRAIN_REMIND);
+
+        // 过期训练记录状态修改
+        createOneAlarm(this,finishTrainRecord_hour,finishTrainRecord_minute,
+                Constant.BROCASTER_FROM_FINISH_TRAIN_RECORD,REQUEST_FINISH_TRAIN_RECORD);
 
     }
 
@@ -62,6 +68,7 @@ public class NotificationService extends Service {
 
         stopOneAlarm(this,Constant.BROCASTER_FROM_DAY_TRAIN_REMIND,REQUEST_DAY_TRAIN_REMIND);
 
+        stopOneAlarm(this,Constant.BROCASTER_FROM_FINISH_TRAIN_RECORD,REQUEST_FINISH_TRAIN_RECORD);
         manager=null;
 
     }
