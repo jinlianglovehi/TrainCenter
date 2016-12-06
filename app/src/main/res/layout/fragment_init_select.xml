@@ -30,12 +30,12 @@
             android:text="@string/please_select_train_plan"
             />
 
-        <android.support.v7.widget.RecyclerView
+        <com.huami.watch.train.ui.widget.FullListView
             android:id="@+id/recyclearView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
+        </com.huami.watch.train.ui.widget.FullListView>
 
     </LinearLayout>
 

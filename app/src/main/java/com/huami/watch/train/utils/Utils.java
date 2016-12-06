@@ -275,9 +275,13 @@ public class Utils {
 
                 if (trainPlanList != null) {
                     TrainPlan selectTrainPlan = trainPlanList.get(selectPosition);
+                    LogUtils.print(TAG, "selectTrainPlanJumpToPage  id："+ selectTrainPlan.getId());
 //                    TrainRecord trainRecord = Utils.trainPlanToTrainRecord(selectTrainPlan);
 //                    Long id = TrainRecordManager.getInstance().insert(trainRecord);
                     subscriber.onNext(selectTrainPlan.getId());
+                    subscriber.onCompleted();
+                }else{
+                    LogUtils.print(TAG, "selectTrainPlanJumpToPage trainPlanList is Empty");
                     subscriber.onCompleted();
                 }
 

@@ -93,7 +93,7 @@ public class DayTrainRecordProvider extends ContentProvider {
                             Bundle build = new Bundle();
                             build.putString("tainContent",dayTrainPlan.getDesc());
                             build.putInt("sportType", DrawableUtils.getSportType(dayTrainPlan.getRunremindId()));
-                            ((AbstractCursor) cursor).setExtras(build);
+//                            ((AbstractCursor) cursor).setExtras(build);
                         }
                         break;
                 }

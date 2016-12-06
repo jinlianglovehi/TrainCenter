@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.huami.watch.train.R;
 import com.huami.watch.train.data.greendao.template.TrainPlan;
 import com.huami.watch.train.utils.DrawableUtils;
+import com.huami.watch.train.utils.LogUtils;
 
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class TrainPlanAdapter  extends RecyclerView.Adapter<TrainPlanAdapter.Vie
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LogUtils.print(TAG, "onCreateViewHolder");
                 View itemView = LayoutInflater.from(parent.getContext())
                .inflate(R.layout.adapter_train_plan, parent, false);
 
@@ -59,14 +61,11 @@ public class TrainPlanAdapter  extends RecyclerView.Adapter<TrainPlanAdapter.Vie
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
+        LogUtils.print(TAG, "onBindViewHolder");
         TrainPlan trainPlan = list.get(position);
         holder.train_plan.setText(trainPlan.getTitle());
 
-//        mContext.getResources().getDrawable(DrawableUtils.getTrainPlanResIdByType(trainPlan.getType()));
         holder.imageView.setImageDrawable(mContext.getResources().getDrawable(DrawableUtils.getTrainPlanResIdByType(trainPlan.getType())));
-//        Glide.with(mContext).load(DrawableUtils.getTrainPlanResIdByType(trainPlan.getType()))
-//                .into(holder.imageView);
-
         if(onItemClickListener!=null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -90,10 +89,17 @@ public class TrainPlanAdapter  extends RecyclerView.Adapter<TrainPlanAdapter.Vie
     @Override
     public int getItemCount() {
         if(isExpand){
+            LogUtils.print(TAG, "getItemCount  isExpand:"+isExpand +",size:"+ list.size());
             return list.size();
         }else{
             return 0 ;
         }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        LogUtils.print(TAG, "getItemViewType:"+ position);
+        return super.getItemViewType(position);
     }
 
     class ViewHolder extends  RecyclerView.ViewHolder{

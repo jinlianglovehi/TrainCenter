@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 android {
-    compileSdkVersion 24
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.0"
     defaultConfig {
         applicationId "com.huami.cn.train"
         minSdkVersion 21
-        targetSdkVersion 24
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,16 +29,17 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    //    compile 'com.android.support:appcompat-v7:24.2.1'
+    //    testCompile 'junit:junit:4.12'
+    //    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.android.support:appcompat-v7:22.0.0'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:recyclerview-v7:24.2.1'
-
+    compile 'com.android.support:recyclerview-v7:22.0.0'
     compile files('libs/butterknife-7.0.1.jar')
     compile files('libs/eventbus-3.0.0.jar')
     compile files('libs/greendao-1.3.7.jar')
     compile files('libs/rxAndroid-1.1.0.jar')
     compile files('libs/rxjava-1.1.0.jar')
-
     //    compile 'com.google.dagger:dagger:2.0.2'
     //    compile 'com.google.dagger:dagger-compiler:2.0.2'
     //    provided 'org.glassfish:javax.annotation:10.0-b28'
@@ -50,4 +51,6 @@ dependencies {
     //    compile 'io.reactivex:rxjava:1.1.0'
     //    compile 'com.github.bumptech.glide:glide:3.5.2'
     //    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.android.support:support-v4:22.0.0'
+//    compile 'com.android.support:support-v4:22.0.0'
 }
