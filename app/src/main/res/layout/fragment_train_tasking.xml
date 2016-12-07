@@ -50,12 +50,12 @@
 
     <RelativeLayout
         android:id="@+id/rl_middle_container"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:background="@color/train_detail_centre_gray"
         android:layout_centerInParent="true"
         android:layout_height="70dp">
 
-
+        <!--android:background="@color/train_detail_centre_gray"-->
         <!--每天的训练的文案   训练提醒-->
         <TextView
             android:id="@+id/day_train_record_copywrite"

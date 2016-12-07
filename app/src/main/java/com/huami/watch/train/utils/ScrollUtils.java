@@ -1,7 +1,7 @@
 package com.huami.watch.train.utils;
 
 import android.widget.ScrollView;
-
+//import com.huami.watch.scrollbar.ArcScrollbarHelper;
 /**
  * Created by jinliang on 16/12/2.
  */
