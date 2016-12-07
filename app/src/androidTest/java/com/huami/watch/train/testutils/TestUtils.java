@@ -2,6 +2,7 @@ package com.huami.watch.train.testutils;
 
 import android.nfc.Tag;
 import android.text.format.DateUtils;
+import android.widget.TextView;
 
 import com.huami.watch.train.base.BaseTest;
 import com.huami.watch.train.utils.DataUtils;
@@ -74,6 +75,11 @@ public class TestUtils  extends BaseTest{
 
     }
 
+
+    public void testTestView(TextView textView){
+        textView.setClickable(false);
+
+    }
 //    @Test
 //    public void getTimeDays(){
 //       String result = DataUtils.getDateByOffsetDays(new Date().getTime()/1000,2);

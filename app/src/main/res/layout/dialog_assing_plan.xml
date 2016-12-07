@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/default_background_black"
     android:layout_height="match_parent">
-    <!--android:background="@color/default_background_black"-->
 
 
     <ImageView
@@ -23,8 +23,16 @@
         android:textAlignment="center"
         android:text="@string/assing_train_plan"
         android:textSize="16sp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/icon_notify_complete"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/green"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp" />
+        android:visibility="invisible"
+        />
 
 </RelativeLayout>
