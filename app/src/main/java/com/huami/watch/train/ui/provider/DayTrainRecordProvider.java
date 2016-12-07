@@ -89,12 +89,12 @@ public class DayTrainRecordProvider extends ContentProvider {
                         DayTrainPlan dayTrainPlan  = SAXUtils.getCurrentDayTrainPlan(getContext(),trainRecord.getTrainType(),offsetDays);
                         cursor =DayTrainRecordManager.getInstance().getAbstractDao().getDatabase().rawQuery(sql_select_current_task,
                               new String[]{String.valueOf(currentTrainRecordId),String.valueOf(offsetDays)});
-                        if(dayTrainPlan!=null){
-                            Bundle build = new Bundle();
-                            build.putString("tainContent",dayTrainPlan.getDesc());
-                            build.putInt("sportType", DrawableUtils.getSportType(dayTrainPlan.getRunremindId()));
-//                            ((AbstractCursor) cursor).setExtras(build);
-                        }
+//                        if(dayTrainPlan!=null){
+//                            Bundle build = new Bundle();
+//                            build.putString("tainContent",dayTrainPlan.getDesc());
+//                            build.putInt("sportType", DrawableUtils.getSportType(dayTrainPlan.getRunremindId()));
+////                            ((AbstractCursor) cursor).setExtras(build);
+//                        }
                         break;
                 }
 
