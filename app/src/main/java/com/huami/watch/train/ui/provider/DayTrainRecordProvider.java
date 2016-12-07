@@ -53,7 +53,7 @@ public class DayTrainRecordProvider extends ContentProvider {
         uriMatcher.addURI(AUTHORITY,"autoDealExpiredData",AUTO_DEAL_EXPIRED_DATA_STATUS); // 自动根据日期处理过期数据
 
 
-        sql_select_current_task = " select _id , DISTANCE ,RATE_START,RATE_END,DAY_TRAIN_STATUS " +
+        sql_select_current_task = " select _id , DISTANCE ,RATE_START,RATE_END,DAY_TRAIN_STATUS,SPORT_TYPE  " +
                 "from DayTrainRecord where TRAIN_RECORD_ID=?  and DAY_TRAIN_STATUS = 0 and OFFSET_DAYS=? ";
 
     }

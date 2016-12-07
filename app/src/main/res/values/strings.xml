@@ -37,7 +37,8 @@
 
     <string name="today">今天</string>
     <string name="train_complete_rate">完成率</string>
-    <string name="assing_train_plan">%1$s 计划|已制定</string>
+    <string name="assing_train_plan">%1$s</string>
+    <string name="train_plan_already_assgn">已定制</string>
 
     <string name="notification_title">训练中心</string>
     <string name="notificaiton_train_content">今日训练还未完成，凡事贵在坚持。加油！</string>

@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
+
 import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.Property;
 import de.greenrobot.dao.internal.DaoConfig;
@@ -31,8 +32,9 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
         public final static Property DayTrainStatus = new Property(6, Integer.class, "dayTrainStatus", false, "DAY_TRAIN_STATUS");
         public final static Property Distance = new Property(7, Double.class, "distance", false, "DISTANCE");
         public final static Property RunremindId = new Property(8, Integer.class, "runremindId", false, "RUNREMIND_ID");
-        public final static Property SwimTimeMin = new Property(9, Integer.class, "swimTimeMin", false, "SWIM_TIME_MIN");
-        public final static Property SwimTimeMax = new Property(10, Integer.class, "swimTimeMax", false, "SWIM_TIME_MAX");
+        public final static Property SportType = new Property(9, Integer.class, "sportType", false, "SPORT_TYPE");
+        public final static Property SwimTimeMin = new Property(10, Integer.class, "swimTimeMin", false, "SWIM_TIME_MIN");
+        public final static Property SwimTimeMax = new Property(11, Integer.class, "swimTimeMax", false, "SWIM_TIME_MAX");
     };
 
 
@@ -57,8 +59,9 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
                 "'DAY_TRAIN_STATUS' INTEGER," + // 6: dayTrainStatus
                 "'DISTANCE' REAL," + // 7: distance
                 "'RUNREMIND_ID' INTEGER," + // 8: runremindId
-                "'SWIM_TIME_MIN' INTEGER," + // 9: swimTimeMin
-                "'SWIM_TIME_MAX' INTEGER);"); // 10: swimTimeMax
+                "'SPORT_TYPE' INTEGER," + // 9: sportType
+                "'SWIM_TIME_MIN' INTEGER," + // 10: swimTimeMin
+                "'SWIM_TIME_MAX' INTEGER);"); // 11: swimTimeMax
     }
 
     /** Drops the underlying database table. */
@@ -117,14 +120,19 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
             stmt.bindLong(9, runremindId);
         }
  
+        Integer sportType = entity.getSportType();
+        if (sportType != null) {
+            stmt.bindLong(10, sportType);
+        }
+ 
         Integer swimTimeMin = entity.getSwimTimeMin();
         if (swimTimeMin != null) {
-            stmt.bindLong(10, swimTimeMin);
+            stmt.bindLong(11, swimTimeMin);
         }
  
         Integer swimTimeMax = entity.getSwimTimeMax();
         if (swimTimeMax != null) {
-            stmt.bindLong(11, swimTimeMax);
+            stmt.bindLong(12, swimTimeMax);
         }
     }
 
@@ -147,8 +155,9 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
             cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6), // dayTrainStatus
             cursor.isNull(offset + 7) ? null : cursor.getDouble(offset + 7), // distance
             cursor.isNull(offset + 8) ? null : cursor.getInt(offset + 8), // runremindId
-            cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9), // swimTimeMin
-            cursor.isNull(offset + 10) ? null : cursor.getInt(offset + 10) // swimTimeMax
+            cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9), // sportType
+            cursor.isNull(offset + 10) ? null : cursor.getInt(offset + 10), // swimTimeMin
+            cursor.isNull(offset + 11) ? null : cursor.getInt(offset + 11) // swimTimeMax
         );
         return entity;
     }
@@ -165,8 +174,9 @@ public class DayTrainRecordDao extends AbstractDao<DayTrainRecord, Long> {
         entity.setDayTrainStatus(cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6));
         entity.setDistance(cursor.isNull(offset + 7) ? null : cursor.getDouble(offset + 7));
         entity.setRunremindId(cursor.isNull(offset + 8) ? null : cursor.getInt(offset + 8));
-        entity.setSwimTimeMin(cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9));
-        entity.setSwimTimeMax(cursor.isNull(offset + 10) ? null : cursor.getInt(offset + 10));
+        entity.setSportType(cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9));
+        entity.setSwimTimeMin(cursor.isNull(offset + 10) ? null : cursor.getInt(offset + 10));
+        entity.setSwimTimeMax(cursor.isNull(offset + 11) ? null : cursor.getInt(offset + 11));
      }
     
     /** @inheritdoc */

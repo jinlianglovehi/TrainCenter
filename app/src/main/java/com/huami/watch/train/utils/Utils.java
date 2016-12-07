@@ -106,10 +106,13 @@ public class Utils {
 
             dayTrainRecord.setRunremindId(item.getRunremindId());
 
+
             dayTrainRecord.setRateStart(item.getRateStart());
             dayTrainRecord.setRateEnd(item.getRateEnd());
 
             dayTrainRecord.setTrainType(trainType);
+
+            dayTrainRecord.setSportType(DrawableUtils.getSportType(item.getRunremindId()));
 
             dayTrainRecord.setDistance(item.getDistance());//当天的训练长度
             // 计算后最小的心率

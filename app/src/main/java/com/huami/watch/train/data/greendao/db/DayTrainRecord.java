@@ -15,6 +15,7 @@ public class DayTrainRecord {
     private Integer dayTrainStatus;
     private Double distance;
     private Integer runremindId;
+    private Integer sportType;
     private Integer swimTimeMin;
     private Integer swimTimeMax;
 
@@ -25,7 +26,7 @@ public class DayTrainRecord {
         this.id = id;
     }
 
-    public DayTrainRecord(Long id, Long trainRecordId, Integer trainType, Integer rateStart, Integer rateEnd, Integer offsetDays, Integer dayTrainStatus, Double distance, Integer runremindId, Integer swimTimeMin, Integer swimTimeMax) {
+    public DayTrainRecord(Long id, Long trainRecordId, Integer trainType, Integer rateStart, Integer rateEnd, Integer offsetDays, Integer dayTrainStatus, Double distance, Integer runremindId, Integer sportType, Integer swimTimeMin, Integer swimTimeMax) {
         this.id = id;
         this.trainRecordId = trainRecordId;
         this.trainType = trainType;
@@ -35,6 +36,7 @@ public class DayTrainRecord {
         this.dayTrainStatus = dayTrainStatus;
         this.distance = distance;
         this.runremindId = runremindId;
+        this.sportType = sportType;
         this.swimTimeMin = swimTimeMin;
         this.swimTimeMax = swimTimeMax;
     }
@@ -109,6 +111,14 @@ public class DayTrainRecord {
 
     public void setRunremindId(Integer runremindId) {
         this.runremindId = runremindId;
+    }
+
+    public Integer getSportType() {
+        return sportType;
+    }
+
+    public void setSportType(Integer sportType) {
+        this.sportType = sportType;
     }
 
     public Integer getSwimTimeMin() {

@@ -40,7 +40,9 @@ public class TestProvider extends BaseActivity {
 //startNotificationService();
 
 //        queryTodayTask();
-        testAutoFinishExpiredData();
+//        testAutoFinishExpiredData();
+
+        queryTodayTask();
     }
 
 
@@ -102,7 +104,11 @@ public class TestProvider extends BaseActivity {
                 rateStart = cursor.getInt(item++);
                 rateEnd =cursor.getInt(item++);
                 dayTrainStatus = cursor.getInt(item++);
-                LogUtils.sysPrint(TAG," id:"+id+",distance:"+distance+",rateStart:"+rateStart+",rateEnd:"+rateEnd+",dayTrainStatus:"+dayTrainStatus);
+                int sportType =cursor.getInt(item++);
+                LogUtils.sysPrint(TAG," id:"+id+",distance:"+distance+",rateStart:"
+                        +rateStart+",rateEnd:"+rateEnd+",dayTrainStatus:"+dayTrainStatus
+                        +",sportType:"+ sportType
+                );
             }
         }else {
             LogUtils.print(TAG, "testQuery  cursor has no data ");
