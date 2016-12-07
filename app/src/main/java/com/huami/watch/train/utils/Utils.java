@@ -34,7 +34,8 @@ public class Utils {
      *  跑步
      */
     private static final String RUNNING_PACKAGE = "com.huami.watch.sport" ;
-    private static final String RUNNING_CLASS_NAME =RUNNING_PACKAGE +".ui.SportActivity" ;
+    private static final String RUNNING_CLASS_NAME ="com.huami.watch.sport.action.SPORT_LAUNCHER" ;
+
 
     /**
      * 游泳
