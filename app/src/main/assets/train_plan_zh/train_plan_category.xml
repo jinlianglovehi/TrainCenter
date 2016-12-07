@@ -9,7 +9,7 @@
             <totalDays>56</totalDays>
         </trainplan>
         <trainplan id="2">
-            <title>5公里训练</title>
+            <title>5公里</title>
             <type>2</type>
             <orderId>2</orderId>
             <totalLength>148</totalLength>
@@ -17,7 +17,7 @@
             <copyWrite>适于入门跑者。此训练可以帮助你成为运动状态更佳的跑者。</copyWrite>
         </trainplan>
         <trainplan id="3">
-            <title>10公里训练</title>
+            <title>10公里</title>
             <type>3</type>
             <orderId>3</orderId>
             <totalLength>212</totalLength>
@@ -25,7 +25,7 @@
             <copyWrite>适于进阶跑者 。此训练有助于提升你的有氧适能和肌肉力量。</copyWrite>
         </trainplan>
         <trainplan id="4">
-            <title>半程马拉松训练</title>
+            <title>半程马拉松</title>
             <type>4</type>
             <orderId>4</orderId>
             <totalLength>307.4</totalLength>
@@ -33,7 +33,7 @@
             <copyWrite>适于半马备赛者 。此训练有助于提示你长时间不间断跑的能力。</copyWrite>
         </trainplan>
         <trainplan id="5">
-            <title>全程马拉松训练</title>
+            <title>全程马拉松</title>
             <type>5</type>
             <orderId>5</orderId>
             <totalLength>436.0</totalLength>
