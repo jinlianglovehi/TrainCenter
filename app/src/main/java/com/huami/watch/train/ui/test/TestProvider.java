@@ -28,6 +28,8 @@ public class TestProvider extends BaseActivity {
      private static final String TAG = TestProvider.class.getSimpleName();
     private NotificationManager notificationManager ;
     private NotificationCompat.Builder builder ;
+
+    private Long id ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +41,9 @@ public class TestProvider extends BaseActivity {
 
 //startNotificationService();
 
-//        queryTodayTask();
+        queryTodayTask();
 //        testAutoFinishExpiredData();
 
-        queryTodayTask();
     }
 
 
@@ -53,7 +54,7 @@ public class TestProvider extends BaseActivity {
 
         ContentResolver resolver =  getContentResolver();
         Uri uri = Uri.parse("content://com.huami.watch.train.ui.provider.dayTrainRecordProvider/autoDealExpiredData");
-       int result =  resolver.update(uri,null,null,null);
+        int result =  resolver.update(uri,null,null,null);
         LogUtils.print(TAG, "testAutoFinishExpiredData  result:"+ result);
 
 
@@ -73,8 +74,10 @@ public class TestProvider extends BaseActivity {
     public void testSendNofication (){
         LogUtils.print(TAG, "testSendNofication");
 
-       startNotificationService();
+//       startNotificationService();
 
+        LogUtils.print(TAG, "testSendNofication id:"+ id);
+        updateTodayTaskStatus(id);
     }
 
     /**
@@ -85,7 +88,6 @@ public class TestProvider extends BaseActivity {
         Uri uri = Uri.parse("content://com.huami.watch.train.ui.provider.dayTrainRecordProvider/getTodayTrainTask");
         // 添加运动类型
         Cursor cursor = resolver.query(uri,null,null,null,null);
-        Long id  ;
         double  distance  ;
         int rateStart,rateEnd,dayTrainStatus,item ;
         /**
@@ -94,8 +96,7 @@ public class TestProvider extends BaseActivity {
         if(cursor!=null){
             Bundle  bundle  =  cursor.getExtras();
             // sportType: 100 running  ，200  swiming ，300 ride  400： rest；
-            LogUtils.sysPrint(TAG,"trainType: "+bundle.getInt("sportType"));// 获取运动类型
-            LogUtils.sysPrint(TAG,"trainContent: "+bundle.getString("tainContent"));//获取当天的运动项目
+
             LogUtils.print(TAG, "testQuery  cursor has data ");
             while (cursor.moveToNext()) {
                 item = 0 ;
@@ -113,6 +114,8 @@ public class TestProvider extends BaseActivity {
         }else {
             LogUtils.print(TAG, "testQuery  cursor has no data ");
         }
+
+        LogUtils.print(TAG, "queryTodayTask  id:"+ id);
 
     }
 
