@@ -25,7 +25,7 @@ import butterknife.OnClick;
  */
 
 public class TestProvider extends BaseActivity {
-     private static final String TAG = TestProvider.class.getSimpleName();
+    private static final String TAG = TestProvider.class.getSimpleName();
     private NotificationManager notificationManager ;
     private NotificationCompat.Builder builder ;
 

@@ -45,7 +45,6 @@
         <!--选择一个训练计划后的widget 提醒的界面-->
         <activity android:name=".ui.activity.TrainWidgetRemindActivity" />
 
-
         <!--常驻进程-->
         <service android:name=".ui.notification.NotificationService"
             android:process=".notificationmessage"
